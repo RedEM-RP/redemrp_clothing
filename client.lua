@@ -30,22 +30,30 @@ local lista_bandana_f = {}
 
 local femaletorsos = {} 
 local femalelegs = {}
-
 local maletorsos = {}
 local malelegs = {}
-
 local legs = nil
 local legs2 = nil
 local torso = nil
 local torso2 = nil
-
 local lista_spodnica = {} --skirt 
 local adding2 = true
 local adding = true
 local glowna = lista_kapelusze
 local sex_global = 1
 local cam = nil
-
+------------------------------------------
+	local 	kapelusz = 1
+	local	koszula = 1
+	local	kamizelka = 1
+	local	plaszcz = 1
+	local	spodnie = 1
+	local	spodnica = 1
+	local	maska = 1
+	local	buty = 1
+	local	rekawiczki = 1
+	local	bandana = 1
+--------------------------------------------	
 Citizen.CreateThread(function()
     while adding do
         Citizen.Wait(0)
@@ -120,8 +128,9 @@ end)
 
 
 RegisterNetEvent('redemrp_clothing:sex')
-AddEventHandler('redemrp_clothing:sex', function(skin)
+AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
     local _skin = json.decode(skin)
+	local _ubranie = json.decode(ubranie)
     local sex = 1
     if _skin.sex == "male" then
         sex = 1
@@ -145,6 +154,15 @@ AddEventHandler('redemrp_clothing:sex', function(skin)
             torso = '0x' .. maletorsos[3]
             legs = '0x' .. malelegs[2]
         else end
+		kapelusz = tonumber( _ubranie.kapelusz)
+		koszula = tonumber(_ubranie.koszula)
+		kamizelka = tonumber(_ubranie.kamizelka)
+		plaszcz =tonumber (_ubranie.plaszcz)
+		spodnie = tonumber(_ubranie.spodnie)
+		maska = tonumber(_ubranie.maska)
+		buty = tonumber(_ubranie.buty)
+		rekawiczki = tonumber(_ubranie.rekawiczki)
+		bandana = tonumber(_ubranie.bandana)
     else
         sex = 2
         sex_global = sex
@@ -167,6 +185,16 @@ AddEventHandler('redemrp_clothing:sex', function(skin)
             torso2 = '0x' .. femaletorsos[9]
             legs2 = '0x' .. femalelegs[8]
         else end
+		kapelusz = tonumber( _ubranie.kapelusz)
+		koszula = tonumber(_ubranie.koszula)
+		kamizelka = tonumber(_ubranie.kamizelka)
+		plaszcz =tonumber (_ubranie.plaszcz)
+		spodnie = tonumber(_ubranie.spodnie)
+		spodnica = tonumber(_ubranie.spodnica)
+		maska = tonumber(_ubranie.maska)
+		buty = tonumber(_ubranie.buty)
+		rekawiczki = tonumber(_ubranie.rekawiczki)
+		bandana = tonumber(_ubranie.bandana)
     end
     startUI(sex)
     SetNuiFocus(true, true)
@@ -180,7 +208,17 @@ function startUI(sex)
     SendNUIMessage({
         type = "ui",
         display = true,
-        sex3 = sex1
+        sex3 = sex1,
+		kapelusz = kapelusz,
+		koszula = koszula,
+		kamizelka = kamizelka,
+		plaszcz = plaszcz,
+		spodnie = spodnie,
+		maska = maska,
+		buty = buty,
+		rekawiczki = rekawiczki,
+		bandana = bandana,
+		spodnica = spodnica
     })
 end
 
@@ -191,10 +229,10 @@ function hideUI()
 
     })
 end
-
+-- Blacha20199
 
 RegisterCommand('clothing', function(source, args)
-    TriggerServerEvent("redemrp_clothing:sex_test", function(cb)
+    TriggerServerEvent("redemrp_clothing:loadClothes", 2, function(cb)
         end)
 end)
 
@@ -386,7 +424,7 @@ end)
 
 RegisterNetEvent('redemrp_clothing:load2')
 AddEventHandler('redemrp_clothing:load2', function()
-    TriggerServerEvent("redemrp_clothing:loadClothes", function(cb)
+    TriggerServerEvent("redemrp_clothing:loadClothes", 1, function(cb)
         end)
 end)
 RegisterNetEvent('redemrp_clothing:load_def')
@@ -396,7 +434,7 @@ AddEventHandler('redemrp_clothing:load_def', function()
 end)
 
 RegisterCommand("loadcloath", function(source, args)
-    TriggerServerEvent("redemrp_clothing:loadClothes", function(cb)
+    TriggerServerEvent("redemrp_clothing:loadClothes", 1, function(cb)
         end)
     print(lista_kapelusze[5])
     print(lista_spodnie_f[5])

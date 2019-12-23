@@ -25,14 +25,15 @@
 	
 		var component = "kapelusz";
 		var sex = 1;
+		var item = 0;
 		$(function(){
 			window.onload = (e) => { 
 				window.addEventListener('message', (event) => {	            
-					var item = event.data;
+					item = event.data;
 					if (item !== undefined && item.type === "ui") {		                
 						if (item.display === true) {
 		                  		    $("#mina").show();
-									document.getElementById("test9").value = 334;
+									Load()
 							if (item.sex3 === 2) {
 								var x = document.getElementById("skirt2");
 								x.style.display = "block";
@@ -151,7 +152,7 @@
 		
 								wartosc = this.value;
 								component = "bandana";
-								document.getElementById('rekawiczki').innerHTML = this.value+"/258";
+								document.getElementById('bandana').innerHTML = this.value+"/258";
 								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
 								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
 								}
@@ -198,7 +199,35 @@
 				$.post('http:/redemrp_clothing/Camera', JSON.stringify());	
 				
 		}
-	                
+	          
+function Load(){
+console.log(item.kapelusz);
+console.log(item.spodnie);
+console.log(item.koszula);
+document.getElementById("test9").value = 334;
+document.getElementById("test2").value = item.kapelusz;
+document.getElementById("test3").value = item.koszula;
+document.getElementById("test4").value = item.kamizelka;
+document.getElementById("test5").value = item.spodnie;
+document.getElementById("test6").value = item.maska;
+document.getElementById("test7").value = item.buty;
+document.getElementById("test8").value = item.spodnica;
+document.getElementById("test10").value = item.plaszcz;
+document.getElementById("test11").value = item.rekawiczki;
+document.getElementById("test12").value = item.bandana;
+
+document.getElementById('hat').innerHTML = item.kapelusz+"/586";
+document.getElementById('shirt').innerHTML = item.koszula+"/339";
+document.getElementById('vest').innerHTML = item.kamizelka+"/199";
+document.getElementById('pants').innerHTML = item.spodnie+"/328";
+document.getElementById('mask').innerHTML = item.maska+"/79";
+document.getElementById('boots').innerHTML = item.buty+"/426";
+document.getElementById('skirt').innerHTML = item.spodnica+"/102";
+document.getElementById('coat').innerHTML = item.plaszcz+"/403";
+document.getElementById('rekawiczki').innerHTML = item.rekawiczki+"/166";
+document.getElementById('bandana').innerHTML = item.bandana+"/258";
+
+}			  
 		
 	</script>
 
