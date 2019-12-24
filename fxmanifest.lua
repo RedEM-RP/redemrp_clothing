@@ -15,6 +15,7 @@ client_scripts {
 files {
     'html/h.html',
 	'html/bg.png',
+	'html/bg2.png',
 	'html/style.css',
 	'html/crock.ttf',
 }

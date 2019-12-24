@@ -54,6 +54,8 @@ local cam = nil
 	local	rekawiczki = 1
 	local	bandana = 1
 --------------------------------------------	
+
+
 Citizen.CreateThread(function()
     while adding do
         Citizen.Wait(0)
@@ -195,11 +197,10 @@ AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
 		buty = tonumber(_ubranie.buty)
 		rekawiczki = tonumber(_ubranie.rekawiczki)
 		bandana = tonumber(_ubranie.bandana)
-    end
+ end
     startUI(sex)
     SetNuiFocus(true, true)
-    camera(3.1,-0.15)
-
+    camera(3.1,-0.15)	
 
 end)
 
@@ -436,8 +437,6 @@ end)
 RegisterCommand("loadcloath", function(source, args)
     TriggerServerEvent("redemrp_clothing:loadClothes", 1, function(cb)
         end)
-    print(lista_kapelusze[5])
-    print(lista_spodnie_f[5])
 end)
 
 RegisterNetEvent('redemrp_clothing:load')
@@ -493,15 +492,6 @@ AddEventHandler('redemrp_clothing:load', function(skin, ubranie)
             --print("poszło3")
         end
         Wait(300)
-        glowna = lista_plaszcz
-        wartosc = tonumber(_ubranie.plaszcz)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło1")
-        end
-        Wait(300)
         glowna = lista_spodnie
         wartosc = tonumber(_ubranie.spodnie)
         if wartosc > 1 then
@@ -537,6 +527,15 @@ AddEventHandler('redemrp_clothing:load', function(skin, ubranie)
             hash = ("0x" .. glowna[wartosc])
             ladowanie(hash)
             --print("poszło6")
+        end
+		 Wait(300)
+		  glowna = lista_plaszcz
+          wartosc = tonumber(_ubranie.plaszcz)
+		  if wartosc > 1 then
+            --print(wartosc)
+            hash = ("0x" .. glowna[wartosc])
+            ladowanie(hash)
+            --print("poszło1")
         end
     else
 
@@ -716,3 +715,6 @@ DestroyAllCams(true)
     DisplayHud(false)
     DisplayRadar(false)
 end
+
+
+

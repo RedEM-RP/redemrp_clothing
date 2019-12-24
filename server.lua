@@ -85,6 +85,9 @@ AddEventHandler('redemrp_clothing:loadClothes', function(value)
                         TriggerClientEvent("redemrp_clothing:load", _source, skin, ubrania)
                     elseif _value == 2 then
                         TriggerClientEvent("redemrp_clothing:sex", _source, skin, ubrania)
+					elseif _value == 3 then
+					 TriggerClientEvent("redemrp_clothes_remove:start", _source, skin, ubrania)
+					
                     end
                 else
                     TriggerClientEvent("redemrp_clothing:load_def" , _source)
