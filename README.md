@@ -25,7 +25,7 @@ You can use:
 /loadcloath -to load clothes
 
 ## 4. Credits
-[Ktos93](http://github.com/amakuu)
+[Ktos93](http://github.com/Ktos93)
 
 [amakuu](http://github.com/amakuu) - Thanks for the redemrp_skin look and files with components
 
