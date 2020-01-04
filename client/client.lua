@@ -634,16 +634,6 @@ AddEventHandler('redemrp_clothing:load', function(skin, ubranie)
     end
 end)
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent('redemrp_clothing:cancel')
-AddEventHandler('redemrp_clothing:cancel', function()
-    local timer = 200
-    while timer > 0 do
-        Citizen.Wait(0)
-        DrawTxt("NO MONEY", 0.50, 0.90, 0.6, 0.6, true, 161, 3, 0, 255, true, 10000)
-        timer = timer - 1
-    end
-end)
-
 
 function ladowanie(hash)
     Citizen.InvokeNative(0xD3A7B003ED343FD9 , PlayerPedId(),  tonumber(hash), true, true, true)
@@ -651,16 +641,6 @@ function ladowanie(hash)
     --print(hash)
 end
 
-
-function DrawTxt(str, x, y, w, h, enableShadow, col1, col2, col3, a, centre)
-    local str = CreateVarString(10, "LITERAL_STRING", str, Citizen.ResultAsLong())
-    SetTextScale(w, h)
-    SetTextColor(math.floor(col1), math.floor(col2), math.floor(col3), math.floor(a))
-    SetTextCentre(centre)
-    if enableShadow then SetTextDropshadow(1, 0, 0, 0, 255) end
-		Citizen.InvokeNative(0xADA9255D, 10);
-		DisplayText(str, x, y)
-end
 
 function destory()
     SetCamActive(cam, false)
