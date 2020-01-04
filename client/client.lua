@@ -232,10 +232,12 @@ function hideUI()
 end
 -- Blacha20199
 
+if Config.EnableCommand then
 RegisterCommand('clothing', function(source, args)
     TriggerServerEvent("redemrp_clothing:loadClothes", 2, function(cb)
         end)
 end)
+else end
 
 
 
