@@ -31,6 +31,7 @@ AddEventHandler('redemrp_clothing:Save', function(ubrania, price, cb)
         else
             print("ZA MALO PIENIEDZY")
             TriggerClientEvent("redemrp_clothing:load2" , source)
+            Wait(1000)
             TriggerClientEvent("redemrp_notification:start",source, "You do not have money" , 2, "error")
         end
 
