@@ -7,9 +7,10 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 ui_page 'html/h.html'
 
 client_scripts {
-    'client.lua',
+    'client/client.lua',
 	'mp_male.lua',
 	'mp_female.lua',
+	'config.lua'
 } 
 
 files {
@@ -19,7 +20,7 @@ files {
 	'html/crock.ttf',
 }
 server_scripts {
-	'server.lua',
+	'server/server.lua',
 	'@mysql-async/lib/MySQL.lua',
 }
 export "startUI"

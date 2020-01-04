@@ -264,7 +264,7 @@ RegisterNUICallback('Save', function(data, cb)
     }
     --print("tak1")
     print(tonumber(elementy.kapelusz)) -- INCOMING
-    local price = 0
+    local price = Config.Price
     local json = json.encode(elementy)
     TriggerServerEvent("redemrp_clothing:Save", json, price, function(cb)
         if cb then
@@ -716,5 +716,30 @@ DestroyAllCams(true)
     DisplayRadar(false)
 end
 
+Citizen.CreateThread(function()
+	Wait(0)
+	for k,v in pairs(Config.Zones) do
+		local blip = N_0x554d9d53f696d002(1664425300, v)
+		SetBlipSprite(blip, Config.BlipSprite, 1)
+		SetBlipScale(blip, Config.BlipScale)
+		Citizen.InvokeNative(0x9CB1A1623062F402, blip, Config.BlipName)
+	end
+end)
 
+Citizen.CreateThread(function()
+	while true do
+	Wait(0)
+		local playerPed = PlayerPedId()
+		local coords = GetEntityCoords(playerPed)
+	for k,v in pairs(Config.Zones) do
+			if Vdist(coords, v) < 2 then
+				DrawTxt(Config.Shoptext, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
+				if IsControlJustReleased(0, Config.OpenKey) then
+					TriggerServerEvent("redemrp_clothing:loadClothes", 2, function(cb)
+								end)
+				end
+			end
+		end
+	end
+end)
 
