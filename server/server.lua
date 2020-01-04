@@ -10,6 +10,7 @@ AddEventHandler('redemrp_clothing:Save', function(ubrania, price, cb)
         local currentMoney = user.getMoney()
         print (currentMoney)
         if currentMoney >= _price then
+            user.removeMoney(_price)
             TriggerEvent("redemrp_clothing:retrieveClothes", identifier, charid, function(call)
 
                     if call then
@@ -30,7 +31,7 @@ AddEventHandler('redemrp_clothing:Save', function(ubrania, price, cb)
         else
             print("ZA MALO PIENIEDZY")
             TriggerClientEvent("redemrp_clothing:load2" , source)
-            TriggerClientEvent('redemrp_clothing:cancel', source)
+            TriggerClientEvent("redemrp_notification:start",source, "You do not have money" , 2, "error")
         end
 
 
