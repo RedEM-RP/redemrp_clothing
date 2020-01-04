@@ -20,8 +20,6 @@ Without redemrp_skin nothing show up
 ## 3. How to start
 You can use:
 
-/clothing -to open menu
-
 /loadcloath -to load clothes
 
 ## 4. Credits
