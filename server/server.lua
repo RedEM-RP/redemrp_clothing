@@ -113,4 +113,21 @@ AddEventHandler('redemrp_clothing:retrieveClothes', function(identifier, charid,
     end)
 end)
 
-            
+RegisterServerEvent("redemrp_clothing:deleteClothes")
+AddEventHandler("redemrp_clothing:deleteClothes", function(charid, Callback) 
+    local _source = source
+    local id
+    for k,v in ipairs(GetPlayerIdentifiers(_source))do
+        if string.sub(v, 1, string.len("steam:")) == "steam:" then
+            id = v
+            break
+        end
+    end
+	
+  local Callback = callback
+	MySQL.Async.fetchAll('DELETE FROM clothes WHERE `identifier`=@identifier AND `charid`=@charid;', {identifier = id, charid = charid}, function(result)
+		if result then
+		else
+		end
+	end)
+end)       
