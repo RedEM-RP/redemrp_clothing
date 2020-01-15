@@ -460,6 +460,7 @@ AddEventHandler('redemrp_clothing:load', function(skin, ubranie)
 
     if sex == 1 then
 	for i = 1 , 3 do
+	SetEntityAlpha(PlayerPedId(), 0)
 	 Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x662AC34, 0)
 	  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
 	  
@@ -563,9 +564,11 @@ AddEventHandler('redemrp_clothing:load', function(skin, ubranie)
             --print("poszło1")
         end
 		end
-    else
+    SetEntityAlpha(PlayerPedId(), 255)
+	else
 
 for i = 1 , 3 do
+SetEntityAlpha(PlayerPedId(), 0)
 	 Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x662AC34, 0)
 	  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
 	  
@@ -677,6 +680,7 @@ for i = 1 , 3 do
             --print("poszło6")
         end
     end
+SetEntityAlpha(PlayerPedId(), 255)
 end
 end)
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
