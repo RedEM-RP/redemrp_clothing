@@ -564,7 +564,10 @@ AddEventHandler('redemrp_clothing:load', function(skin, ubranie)
             --print("poszło1")
         end
 		end
-    SetEntityAlpha(PlayerPedId(), 255)
+    	    for i=51, 255, 51 do
+		Wait(1)
+		SetEntityAlpha(PlayerPedId(), i)
+	    end
 	else
 
 for i = 1 , 3 do
@@ -680,7 +683,10 @@ SetEntityAlpha(PlayerPedId(), 0)
             --print("poszło6")
         end
     end
-SetEntityAlpha(PlayerPedId(), 255)
+    for i=51, 255, 51 do
+	Wait(1)
+	SetEntityAlpha(PlayerPedId(), i)
+    end
 end
 end)
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
