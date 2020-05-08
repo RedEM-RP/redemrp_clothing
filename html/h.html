@@ -50,16 +50,7 @@
 							var suwak8 = document.getElementById("test9");			
 							var suwak9 = document.getElementById("test10");			
 							var suwak10 = document.getElementById("test11");		
-							var suwak11 = document.getElementById("test12");
-							var suwak12 = document.getElementById("test13");
-							var suwak13 = document.getElementById("test14");
-							var suwak14 = document.getElementById("test15");
-							var suwak15 = document.getElementById("test16");
-							var suwak16 = document.getElementById("test17");
-							var suwak17 = document.getElementById("test18");
-							var suwak18 = document.getElementById("test19");	
-							var suwak19 = document.getElementById("test20");
-							var suwak20 = document.getElementById("test21");									
+							var suwak11 = document.getElementById("test12");														
 							var wartosc = 1;	
 	
 						suwak.oninput = function() 
@@ -98,105 +89,6 @@
 								wartosc = this.value;
 								component = "spodnie";
 								document.getElementById('pants').innerHTML = this.value+"/328";
-								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
-								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
-								}
-
-						suwak13.oninput = function() 
-								
-							{
-		
-								wartosc = this.value;
-								component = "belt";
-								document.getElementById('belt').innerHTML = this.value+"/70";
-								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
-								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
-								}
-
-						suwak14.oninput = function() 
-								
-							{
-		
-								wartosc = this.value;
-								component = "spur";
-								document.getElementById('spur').innerHTML = this.value+"/128";
-								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
-								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
-								}
-
-						suwak15.oninput = function() 
-								
-							{
-		
-								wartosc = this.value;
-								component = "chap";
-								document.getElementById('chap').innerHTML = this.value+"/51";
-								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
-								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
-								}
-
-						suwak16.oninput = function() 
-								
-							{
-		
-								wartosc = this.value;
-								component = "poncho";
-								document.getElementById('poncho').innerHTML = this.value+"/57";
-								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
-								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
-								}
-
-						suwak17.oninput = function() 
-								
-							{
-		
-								wartosc = this.value;
-								component = "beltbuckle";
-								document.getElementById('beltbuckle').innerHTML = this.value+"/176";
-								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
-								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
-								}
-
-						suwak18.oninput = function() 
-								
-							{
-		
-								wartosc = this.value;
-								component = "cloak";
-								document.getElementById('cloak').innerHTML = this.value+"/21";
-								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
-								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
-								}
-
-						suwak19.oninput = function() 
-								
-							{
-		
-								wartosc = this.value;
-								component = "satchel";
-								document.getElementById('satchel').innerHTML = this.value+"/4";
-								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
-								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
-								}
-
-						suwak20.oninput = function() 
-								
-							{
-		
-								wartosc = this.value;
-								component = "offhand";
-								document.getElementById('offhand').innerHTML = this.value+"/85";
-								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
-								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
-								}
-
-						suwak12.oninput = function() 
-								
-							{
-		
-								wartosc = this.value;
-								component = "holster";
-								document.getElementById('holster').innerHTML = this.value+"/91";
 								$.post('http:/redemrp_clothing/komponent', JSON.stringify(component));
 								$.post('http:/redemrp_clothing/zmiana', JSON.stringify(wartosc));
 								}
@@ -292,22 +184,13 @@
 			var plaszcz1 = document.getElementById('test10').value;
 			var rekawiczki1 = document.getElementById('test11').value;
 			var bandana1 = document.getElementById('test12').value;
-			var holster1 = document.getElementById('test13').value;
-			var belt1 = document.getElementById('test14').value;
-			var spur1 = document.getElementById('test15').value;
-			var chap1 = document.getElementById('test16').value;
-			var poncho1 = document.getElementById('test17').value;
-			var beltbuckle1 = document.getElementById('test18').value;
-			var cloak1 = document.getElementById('test19').value;
-			var satchel1 = document.getElementById('test20').value;
-			var offhand1 = document.getElementById('test21').value;
 			if (sex === 2){
 				var spodnica1 = document.getElementById('test8').value;
-				$.post('http:/redemrp_clothing/Save', JSON.stringify({kapelusz: kapelusz1, koszula: koszula1, kamizelka: kamizelka1, spodnie: spodnie1, maska: maska1, buty: buty1, plaszcz: plaszcz1, rekawiczki: rekawiczki1, bandana: bandana1,holster: holster1, spodnica: spodnica1, belt: belt1, spur: spur1, chap: chap1, poncho: poncho1, beltbuckle: beltbuckle1, cloak: cloak1, satchel: satchel1, offhand: offhand1}));
+				$.post('http:/redemrp_clothing/Save', JSON.stringify({kapelusz: kapelusz1, koszula: koszula1, kamizelka: kamizelka1, spodnie: spodnie1, maska: maska1, buty: buty1, plaszcz: plaszcz1, rekawiczki: rekawiczki1, bandana: bandana1, spodnica: spodnica1}));
 				$("#mina").hide();
 				}
 			else{
-				$.post('http:/redemrp_clothing/Save', JSON.stringify({kapelusz: kapelusz1, koszula: koszula1, kamizelka: kamizelka1, spodnie: spodnie1, maska: maska1, buty: buty1, plaszcz: plaszcz1, rekawiczki: rekawiczki1, bandana: bandana1, holster: holster1, belt: belt1,spur: spur1, chap: chap1, poncho: poncho1, beltbuckle: beltbuckle1, cloak: cloak1, satchel: satchel1, offhand: offhand1}));
+				$.post('http:/redemrp_clothing/Save', JSON.stringify({kapelusz: kapelusz1, koszula: koszula1, kamizelka: kamizelka1, spodnie: spodnie1, maska: maska1, buty: buty1, plaszcz: plaszcz1, rekawiczki: rekawiczki1, bandana: bandana1}));
 				$("#mina").hide();
 				}
 		}
@@ -318,10 +201,9 @@
 		}
 	          
 function Load(){
-// console.log(item.kapelusz);
-// console.log(item.spodnie);
-// console.log(item.koszula);
-// console.log(item.holster);
+console.log(item.kapelusz);
+console.log(item.spodnie);
+console.log(item.koszula);
 document.getElementById("test9").value = 334;
 document.getElementById("test2").value = item.kapelusz;
 document.getElementById("test3").value = item.koszula;
@@ -333,15 +215,6 @@ document.getElementById("test8").value = item.spodnica;
 document.getElementById("test10").value = item.plaszcz;
 document.getElementById("test11").value = item.rekawiczki;
 document.getElementById("test12").value = item.bandana;
-document.getElementById("test13").value = item.holster;
-document.getElementById("test14").value = item.belt;
-document.getElementById("test15").value = item.spur;
-document.getElementById("test16").value = item.chap;
-document.getElementById("test17").value = item.poncho;
-document.getElementById("test18").value = item.beltbuckle;
-document.getElementById("test19").value = item.cloak;
-document.getElementById("test20").value = item.satchel;
-document.getElementById("test21").value = item.offhand;
 
 document.getElementById('hat').innerHTML = item.kapelusz+"/586";
 document.getElementById('shirt').innerHTML = item.koszula+"/339";
@@ -353,15 +226,6 @@ document.getElementById('skirt').innerHTML = item.spodnica+"/102";
 document.getElementById('coat').innerHTML = item.plaszcz+"/403";
 document.getElementById('rekawiczki').innerHTML = item.rekawiczki+"/166";
 document.getElementById('bandana').innerHTML = item.bandana+"/258";
-document.getElementById('holster').innerHTML = item.holster+"/91";
-document.getElementById('belt').innerHTML = item.belt+"/70";
-document.getElementById('spur').innerHTML = item.spur+"/128";
-document.getElementById('chap').innerHTML = item.chap+"/51";
-document.getElementById('poncho').innerHTML = item.poncho+"/57";
-document.getElementById('beltbuckle').innerHTML = item.beltbuckle+"/176";
-document.getElementById('cloak').innerHTML = item.cloak+"/21";
-document.getElementById('satchel').innerHTML = item.satchel+"/4";
-document.getElementById('offhand').innerHTML = item.offhand+"/85";
 
 }			  
 		
@@ -376,60 +240,33 @@ document.getElementById('offhand').innerHTML = item.offhand+"/85";
 HAT<label id="hat">1/586</label><br>
 <input type="range" name="points" min="1" max="586" value="1"class="slider" id="test2"><br>
 
-BANDANA<label id="bandana">1/258</label><br>
-<input type="range" name="points" min="1" max="258" value="1"class="slider" id="test12"><br>
-
-MASK<label id="mask">1/79</label><br>
-<input type="range" name="points" min="0" max="79" value="1"class="slider" id="test6"><br>
-
 SHIRT<label id="shirt">1/339</label><br>
 <input type="range" name="points" min="1" max="339" value="1"class="slider" id="test3"><br>
 
 VEST<label id="vest">1/199</label><br>
 <input type="range" name="points" min="1" max="199" value="1"class="slider" id="test4"><br>
 
-GLOVES<label id="rekawiczki">1/166</label><br>
-<input type="range" name="points" min="0" max="166" value="1"class="slider" id="test11"><br>
-
-CLOAK<label id="cloak">1/57</label><br>
-<input type="range" name="points" min="0" max="21" value="1"class="slider" id="test19"><br>
-
-PONCHO<label id="poncho">1/57</label><br>
-<input type="range" name="points" min="0" max="57" value="1"class="slider" id="test17"><br>
-
 COAT<label id="coat">1/403</label><br>
-<input type="range" name="points" min="0" max="403" value="1"class="slider" id="test10"><br>
-
-SATCHELS<label id="satchel">0/4</label><br>
-<input type="range" name="points" min="0" max="4" value="1"class="slider" id="test20"><br>
-
-BELTS<label id="belt">1/70</label><br>
-<input type="range" name="points" min="0" max="70" value="1"class="slider" id="test14"><br>
-
-GUNBELT<label id="holster">1/91</label><br>
-<input type="range" name="points" min="0" max="91" value="1"class="slider" id="test13"><br>
-
-BUCKLES<label id="beltbuckle">1/176</label><br>
-<input type="range" name="points" min="0" max="176" value="1"class="slider" id="test18"><br>
-
-OFF HAND<label id="offhand">1/85</label><br>
-<input type="range" name="points" min="0" max="91" value="1"class="slider" id="test21"><br>
+<input type="range" name="points" min="1" max="403" value="1"class="slider" id="test10"><br>
 
 PANTS<label id="pants">1/328</label><br>
-<input type="range" name="points" min="0" max="328" value="1"class="slider" id="test5"><br>
+<input type="range" name="points" min="1" max="328" value="1"class="slider" id="test5"><br>
 
-CHAPS<label id="chap">1/50</label><br>
-<input type="range" name="points" min="0" max="50" value="1"class="slider" id="test16"><br>
+MASK<label id="mask">1/79</label><br>
+<input type="range" name="points" min="1" max="79" value="1"class="slider" id="test6"><br>
 
 BOOTS<label id="boots">1/426</label><br>
-<input type="range" name="points" min="0" max="426" value="1"class="slider" id="test7"><br>
+<input type="range" name="points" min="1" max="426" value="1"class="slider" id="test7"><br>
 
-SPURS<label id="spur">1/128</label><br>
-<input type="range" name="points" min="0" max="128" value="1"class="slider" id="test15"><br>
+GLOVES<label id="rekawiczki">1/166</label><br>
+<input type="range" name="points" min="1" max="166" value="1"class="slider" id="test11"><br>
+
+BANDANA<label id="bandana">1/258</label><br>
+<input type="range" name="points" min="1" max="258" value="1"class="slider" id="test12"><br>
 
 <div id="skirt2"><label id="skirt">1/102</label>
 SKIRT<br>
-<input type="range" name="points" min="0" max="102" value="1"class="slider" id="test8"><br>
+<input type="range" name="points" min="1" max="102" value="1"class="slider" id="test8"><br>
 </div>
 </div>
 </div>

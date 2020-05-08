@@ -1,92 +1,5 @@
 Config = {}
 
-local ClothsPrompt
-local hasAlreadyEnteredMarker, lastZone
-local currentZone = nil
-local sell = false
-local active = false
-
-function SetupClothsPrompt()
-    Citizen.CreateThread(function()
-        local str = 'Clothes'
-        ClothsPrompt = PromptRegisterBegin()
-        PromptSetControlAction(ClothsPrompt, 0xE8342FF2)
-        str = CreateVarString(10, 'LITERAL_STRING', str)
-        PromptSetText(ClothsPrompt, str)
-        PromptSetEnabled(ClothsPrompt, false)
-        PromptSetVisible(ClothsPrompt, false)
-        PromptSetHoldMode(ClothsPrompt, true)
-        PromptRegisterEnd(ClothsPrompt)
-    end)
-end
-
-Citizen.CreateThread(function()
-    while true do
-      Citizen.Wait(0)
-          if currentZone then
-              if active == false then
-                  PromptSetEnabled(ClothsPrompt, true)
-                  PromptSetVisible(ClothsPrompt, true)
-                  active = true
-              end
-              if PromptHasHoldModeCompleted(ClothsPrompt) then
-                  PromptSetEnabled(ClothsPrompt, false)
-                  PromptSetVisible(ClothsPrompt, false)
-                  TriggerServerEvent("redemrp_clothing:loadClothes", 2, function(cb)
-                  end)
-                  active = false
-    
-          currentZone = nil
-        end
-          else
-        Citizen.Wait(500)
-      end
-    end
-end)
-
-
-Citizen.CreateThread(function()
-    SetupClothsPrompt()
-    while true do
-        Citizen.Wait(0)
-        local player = PlayerPedId()
-        local coords = GetEntityCoords(player)
-        local isInMarker, currentZone = false
-  
-        for k,v in pairs(Config.Zones) do
-			if Vdist(coords, v) < 2 then
-                isInMarker  = true
-                currentZone = 'shop'
-                lastZone    = 'shop'
-            end
-        end
-  
-        if isInMarker and not hasAlreadyEnteredMarker then
-        hasAlreadyEnteredMarker = true
-        TriggerEvent('redemrp_clothing:hasEnteredMarker', currentZone)
-        end
-    
-        if not isInMarker and hasAlreadyEnteredMarker then
-        hasAlreadyEnteredMarker = false
-        TriggerEvent('redemrp_clothing:hasExitedMarker', lastZone)
-        end
-    end
-  
-end)
-
-AddEventHandler('redemrp_clothing:hasEnteredMarker', function(zone)
-    currentZone     = zone
-end)
-    
-AddEventHandler('redemrp_clothing:hasExitedMarker', function(zone)
-      if active == true then
-          PromptSetEnabled(ClothsPrompt, false)
-          PromptSetVisible(ClothsPrompt, false)
-          active = false
-      end
-    currentZone = nil
-end)
-
 --[[To add clothes, copy the hash, paste it at the end of the list and add range in slider(_f means women Only MP components work)--]]
 
 local lista_kapelusze = {} --hat
@@ -116,37 +29,6 @@ local lista_rekawiczki_f = {}
 local lista_bandana = {}
 local lista_bandana_f = {}
 --local lista_rekawiczki_f = {}
-------
-----gunbelts/holsters
-local list_holsters = {}
-local list_holsters_f =  {}
-
------belts
-local list_belts = {}
-local list_belts_f =  {}
-
-local list_spurs = {}
-local list_spurs_f = {}
-
-local list_chaps = {}
-local list_chaps_f = {}
-
-local list_ponchos = {}
-local list_ponchos_f = {}
-
-local list_beltbuckles = {}
-local list_beltbuckles_f = {}
-
-local list_cloaks = {}
-local list_cloaks_f = {}
-
-local list_satchels = {}
-local list_satchels_f = {}
-
-local list_offhands = {}
-local list_offhands_f = {}
-
-
 
 local femaletorsos = {} 
 local femalelegs = {}
@@ -172,16 +54,7 @@ local cam = nil
 	local	maska = 1
 	local	buty = 1
 	local	rekawiczki = 1
-    local	bandana = 1
-    local	holster = 1
-    local	belt = 1
-    local   spur = 1 
-    local   chap = 1
-    local   poncho = 1
-    local   beltbuckle = 1
-    local   cloak = 1
-    local   satchel = 1
-    local   offhand = 1
+	local	bandana = 1
 --------------------------------------------	
 
 
@@ -212,24 +85,6 @@ Citizen.CreateThread(function()
                 table.insert(lista_rekawiczki, v.Hash)
 			elseif v.category == "neckwear" then
                 table.insert(lista_bandana, v.Hash)
-            elseif v.category == "gunbelts" then
-                table.insert(list_holsters, v.Hash)
-            elseif v.category == "belts" then
-                table.insert(list_belts, v.Hash)
-            elseif v.category == "spurs" then
-                table.insert(list_spurs, v.Hash)
-            elseif v.category == "chaps" then
-                table.insert(list_chaps, v.Hash)
-            elseif v.category == "ponchos" then
-                table.insert(list_ponchos, v.Hash)
-            elseif v.category == "beltbuckle" then
-                table.insert(list_beltbuckles, v.Hash)
-            elseif v.category == "cloaks" then
-                table.insert(list_cloaks, v.Hash)
-            elseif v.category == "satchels" then
-                table.insert(list_satchels, v.Hash)
-            elseif v.category == "offhand" then
-                table.insert(list_offhands, v.Hash)
             end
         end
         adding = false
@@ -266,33 +121,9 @@ Citizen.CreateThread(function()
                 table.insert(lista_rekawiczki_f, v.hash)
 			elseif v.category == "neckwear" then
                 table.insert(lista_bandana_f, v.hash)
-            elseif v.category == "gunbelts" then
-                table.insert(list_holsters_f, v.hash)
-            elseif v.category == "belts" then
-                table.insert(list_belts_f, v.hash)
-            elseif v.category == "spurs" then
-                table.insert(list_spurs_f, v.hash)
-            elseif v.category == "chaps" then
-                table.insert(list_chaps_f, v.hash)
-            elseif v.category == "ponchos" then
-                table.insert(list_ponchos_f, v.hash)
-            elseif v.category == "beltbuckle" then
-                table.insert(list_beltbuckles_f, v.hash)
-            elseif v.category == "cloaks" then
-                table.insert(list_cloaks_f, v.hash)
-            elseif v.category == "satchels" then
-                table.insert(list_satchels_f, v.hash)
-            elseif v.category == "offhand" then
-                table.insert(list_offhands_f, v.hash)
-            end
+            else end
         end
         adding2 = false
-    end
-end)
-
-RegisterCommand('dump', function(source, args)
-    for key, value in pairs(list_satchels_f) do
-        print(key, value)
     end
 end)
 
@@ -335,16 +166,7 @@ AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
 		maska = tonumber(_ubranie.maska)
 		buty = tonumber(_ubranie.buty)
 		rekawiczki = tonumber(_ubranie.rekawiczki)
-        bandana = tonumber(_ubranie.bandana)
-        holster = tonumber(_ubranie.holster)
-        belt = tonumber(_ubranie.belt)
-        spur = tonumber(_ubranie.spur)
-        chap = tonumber(_ubranie.chap)
-        poncho = tonumber(_ubranie.poncho)
-        beltbuckle = tonumber(_ubranie.beltbuckle)
-        cloak = tonumber(_ubranie.cloak)
-        satchel = tonumber(_ubranie.satchel)
-        offhand = tonumber(_ubranie.offhand)
+		bandana = tonumber(_ubranie.bandana)
     else
         sex = 2
         sex_global = sex
@@ -376,16 +198,7 @@ AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
 		maska = tonumber(_ubranie.maska)
 		buty = tonumber(_ubranie.buty)
 		rekawiczki = tonumber(_ubranie.rekawiczki)
-        bandana = tonumber(_ubranie.bandana)
-        holster = tonumber(_ubranie.holster)
-        belt = tonumber(_ubranie.belt)
-        spur = tonumber(_ubranie.spur)
-        chap = tonumber(_ubranie.chap)
-        poncho = tonumber(_ubranie.poncho)
-        beltbuckle = tonumber(_ubranie.beltbuckle)
-        cloak = tonumber(_ubranie.cloak)
-        satchel = tonumber(_ubranie.satchel)
-        offhand = tonumber(_ubranie.offhand)
+		bandana = tonumber(_ubranie.bandana)
  end
     startUI(sex)
     SetNuiFocus(true, true)
@@ -408,16 +221,7 @@ function startUI(sex)
 		buty = buty,
 		rekawiczki = rekawiczki,
 		bandana = bandana,
-        spodnica = spodnica,
-        holster = holster,
-        belt = belt,
-        spur = spur,
-        chap = chap,
-        poncho = poncho,
-        beltbuckle = beltbuckle,
-        cloak = cloak,
-        satchel = satchel,
-        offhand = offhand
+		spodnica = spodnica
     })
 end
 
@@ -430,12 +234,12 @@ function hideUI()
 end
 -- Blacha20199
 
--- if Config.EnableCommand then
--- RegisterCommand('clothing', function(source, args)
---     TriggerServerEvent("redemrp_clothing:loadClothes", 2, function(cb)
---         end)
--- end)
--- else end
+if Config.EnableCommand then
+RegisterCommand('clothing', function(source, args)
+    TriggerServerEvent("redemrp_clothing:loadClothes", 2, function(cb)
+        end)
+end)
+else end
 
 
 
@@ -459,18 +263,7 @@ RegisterNUICallback('Save', function(data, cb)
         ["spodnica"] = data.spodnica,
         ["plaszcz"] = data.plaszcz,
 		["rekawiczki"] = data.rekawiczki,
-        ["bandana"] = data.bandana,
-        ["holster"] = data.holster,
-        ["belt"] = data.belt,
-        ["spur"] = data.spur,
-        ["chap"] = data.chap,
-        ["poncho"] = data.poncho,
-        ["beltbuckle"] = data.beltbuckle,
-        ["cloak"] = data.cloak,
-        ["satchel"] = data.satchel,
-        ["offhand"] = data.offhand,
-
-
+		["bandana"] = data.bandana
 
     }
     --print("tak1")
@@ -520,34 +313,7 @@ RegisterNUICallback('komponent', function(component)
 			camera(1.8,-0.3)
 		elseif component == "bandana" then
             glowna = lista_bandana
-            camera(1.5,0.4)
-        elseif component == "holster" then
-            glowna = list_holsters
-            camera(2.2,-0.3)
-        elseif component == "belt" then
-            glowna = list_belts
-            camera(2.2,-0.3)
-        elseif component == "spur" then
-            glowna = list_spurs
-            camera(1.8,-0.6)
-        elseif component == "chap" then
-            glowna = list_chaps
-            camera(2.2,-0.3)
-        elseif component == "poncho" then
-            glowna = list_ponchos
-            camera(1.8,0.1)
-        elseif component == "beltbuckle" then
-            glowna = list_beltbuckles
-            camera(2.2,-0.3)
-        elseif component == "cloak" then
-            glowna = list_cloaks
-            camera(1.8,0.1)
-        elseif component == "satchel" then
-            glowna = list_satchels
-            camera(1.5,0.4)
-        elseif component == "offhand" then
-            glowna = list_offhands
-            camera(2.2,-0.3)
+			camera(1.5,0.4)
         end
 
     elseif sex_global == 2 then
@@ -580,34 +346,8 @@ RegisterNUICallback('komponent', function(component)
 			camera(1.8,-0.3)
 		elseif component == "bandana" then
             glowna = lista_bandana_f
-            camera(1.5,0.4)
-        elseif component == "holster" then
-            glowna = list_holsters_f
-            camera(2.2,-0.3)
-        elseif component == "belt" then
-            glowna = list_belts_f
-            camera(2.2,-0.3)
-        elseif component == "spur" then
-            glowna = list_spurs_f
-            camera(1.8,-0.6)
-        elseif component == "chap" then
-            glowna = list_chaps_f
-            camera(2.2,-0.3)
-        elseif component == "poncho" then
-            glowna = list_ponchos_f
-            camera(1.8,0.1)
-        elseif component == "beltbuckle" then
-            glowna = list_beltbuckles_f
-            camera(2.2,-0.3)
-        elseif component == "cloak" then
-            glowna = list_cloaks_f
-            camera(1.8,0.1)
-        elseif component == "satchel" then
-            glowna = list_satchels_f
-            camera(1.5,0.4)
-        elseif component == "offhand" then
-            glowna = list_offhands_f
-            camera(2.2,-0.3)
+			camera(1.5,0.4)
+
         end
     end
     --print(component)
@@ -616,7 +356,7 @@ end)
 RegisterNUICallback('zmiana', function(wartosc)
     local wartosc2 = tonumber(wartosc)
     local hash = ("0x" .. glowna[wartosc2])
-    print(hash)
+
     --print(glowna[wartosc2])
     if glowna == lista_spodnie_f and wartosc2 <= 1  then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x1D4C528A, 0) -- Set target category, here the hash is for hats
@@ -650,40 +390,6 @@ RegisterNUICallback('zmiana', function(wartosc)
 	elseif (glowna == lista_bandana or glowna == lista_bandana_f) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x5FC29285, 0) -- Set target category, here the hash is for hats
         --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0) -- Actually remove the component
-    elseif (glowna == list_holsters or glowna == list_holsters_f) and wartosc2 == 1 then
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xB9E2FA01, 0) -- holsters
-        --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-    elseif (glowna == list_belts or glowna == list_belts_f) and wartosc2 == 1 then
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xA6D134C6, 0) -- belts
-        --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-    elseif (glowna == list_beltbuckles or glowna == list_beltbuckles_f) and wartosc2 == 1 then
-            Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xFAE9107F, 0) -- beltsbuckles
-            --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-    elseif (glowna == list_spurs or glowna == list_spurs_f) and wartosc2 == 1 then
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x18729F39, 0) -- SPURS
-        --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-    elseif (glowna == list_chaps or glowna == list_chaps_f) and wartosc2 == 1 then
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x18729F39, 0) -- chaps
-        --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-    
-    elseif (glowna == list_ponchos or glowna == list_ponchos_f) and wartosc2 == 1 then
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xAF14310B, 0) -- ponchos
-        --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-    elseif (glowna == list_cloaks or glowna == list_cloaks_f) and wartosc2 == 1 then
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x3C1A74CD, 0) -- cloaks
-        --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-    elseif (glowna == list_satchels or glowna == list_satchels_f) and wartosc2 == 1 then
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x94504D26, 0) -- satchels
-        --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-    elseif (glowna == list_offhands or glowna == list_offhands_f) and wartosc2 == 1 then
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xB6B6122D, 0) -- holsters left
-        --  Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
 		
     elseif (glowna == lista_kapelusze_f or glowna == lista_kapelusze) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x9925C067, 0) -- Set target category, here the hash is for hats
@@ -765,33 +471,6 @@ AddEventHandler('redemrp_clothing:load', function(skin, ubranie)
         Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
 		
 		 Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x1D4C528A, 0) 
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xB9E2FA01, 0)   ---holsters
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xA6D134C6, 0)   ---belts
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x18729F39, 0)   ---spurs
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x3107499B, 0)   ---chaps
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xAF14310B, 0)   ---onchos
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xFAE9107F, 0)   ---beltbuckles
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x3C1A74CD, 0)   ---cloaks
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x94504D26, 0)   ---sat
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xB6B6122D, 0)   --offhand
         Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
 		
 		  Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xEABE0032, 0)
@@ -884,92 +563,8 @@ AddEventHandler('redemrp_clothing:load', function(skin, ubranie)
             ladowanie(hash)
             --print("poszło1")
         end
-        Wait(300)
-        glowna = list_holsters
-        wartosc = tonumber(_ubranie.holster)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_belts
-        wartosc = tonumber(_ubranie.belt)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_spurs
-        wartosc = tonumber(_ubranie.spur)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_chaps
-        wartosc = tonumber(_ubranie.chap)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_ponchos
-        wartosc = tonumber(_ubranie.poncho)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_beltbuckles
-        wartosc = tonumber(_ubranie.beltbuckle)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_cloaks
-        wartosc = tonumber(_ubranie.cloak)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_satchels
-        wartosc = tonumber(_ubranie.satchel)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_offhands
-        wartosc = tonumber(_ubranie.offhand)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        end
-        for i=51, 255, 51 do
-            Wait(1)
-            SetEntityAlpha(PlayerPedId(), i)
-        end
+		end
+    SetEntityAlpha(PlayerPedId(), 255)
 	else
 
 for i = 1 , 3 do
@@ -985,37 +580,6 @@ SetEntityAlpha(PlayerPedId(), 0)
 		
 		 Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x1D4C528A, 0) 
         Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xB9E2FA01, 0)   ---holsters
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xA6D134C6, 0)   ---belts
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x18729F39, 0)   ---spurs
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x3107499B, 0)   ---chaps
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xAF14310B, 0)   ---onchos
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xFAE9107F, 0)   ---beltbuckles
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x3C1A74CD, 0)   ---cloaks
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x94504D26, 0)   ---sat
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-
-        Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xB6B6122D, 0)   --offhand
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-		
-		
 		
 		  Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xEABE0032, 0)
 			Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)	
@@ -1115,92 +679,8 @@ SetEntityAlpha(PlayerPedId(), 0)
             ladowanie(hash)
             --print("poszło6")
         end
-        Wait(300)
-        glowna = list_holsters_f
-        wartosc = tonumber(_ubranie.holster)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_belts_f
-        wartosc = tonumber(_ubranie.belt)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_spurs_f
-        wartosc = tonumber(_ubranie.spur)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_chaps_f
-        wartosc = tonumber(_ubranie.chap)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_ponchos_f
-        wartosc = tonumber(_ubranie.poncho)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_beltbuckles_f
-        wartosc = tonumber(_ubranie.beltbuckle)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_cloaks_f
-        wartosc = tonumber(_ubranie.cloak)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_satchels_f
-        wartosc = tonumber(_ubranie.satchel)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
-        Wait(300)
-        glowna = list_offhands_f
-        wartosc = tonumber(_ubranie.offhand)
-        if wartosc > 1 then
-            --print(wartosc)
-            hash = ("0x" .. glowna[wartosc])
-            ladowanie(hash)
-            --print("poszło6")
-        end
     end
-    for i=51, 255, 51 do
-        Wait(1)
-        SetEntityAlpha(PlayerPedId(), i)
-    end
+SetEntityAlpha(PlayerPedId(), 255)
 end
 end)
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1279,26 +759,26 @@ Citizen.CreateThread(function()
 	Wait(0)
 	for k,v in pairs(Config.Zones) do
 		local blip = N_0x554d9d53f696d002(1664425300, v)
-		SetBlipSprite(blip, 1496995379, 1)
-		SetBlipScale(blip, 0.2)
+		SetBlipSprite(blip, Config.BlipSprite, 1)
+		SetBlipScale(blip, Config.BlipScale)
 		Citizen.InvokeNative(0x9CB1A1623062F402, blip, Config.BlipName)
 	end
 end)
 
--- Citizen.CreateThread(function()
--- 	while true do
--- 	Wait(0)
--- 		local playerPed = PlayerPedId()
--- 		local coords = GetEntityCoords(playerPed)
--- 	for k,v in pairs(Config.Zones) do
--- 			if Vdist(coords, v) < 2 then
--- 				DrawTxt(Config.Shoptext, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
--- 				if IsControlJustReleased(0, Config.OpenKey) then
--- 					TriggerServerEvent("redemrp_clothing:loadClothes", 2, function(cb)
--- 					end)
--- 				end
--- 			end
--- 		end
--- 	end
--- end)
+Citizen.CreateThread(function()
+	while true do
+	Wait(0)
+		local playerPed = PlayerPedId()
+		local coords = GetEntityCoords(playerPed)
+	for k,v in pairs(Config.Zones) do
+			if Vdist(coords, v) < 2 then
+				DrawTxt(Config.Shoptext, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
+				if IsControlJustReleased(0, Config.OpenKey) then
+					TriggerServerEvent("redemrp_clothing:loadClothes", 2, function(cb)
+								end)
+				end
+			end
+		end
+	end
+end)
 
