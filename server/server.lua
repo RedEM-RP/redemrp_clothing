@@ -3,7 +3,6 @@ AddEventHandler('redemrp_clothing:Save', function(ubrania, price, cb)
     local _ubrania = ubrania
     local _price = price
     local decode = json.decode(ubrania)
-    print (_price)
     TriggerEvent('redemrp:getPlayerFromId', source, function(user)
         local identifier = user.getIdentifier()
         local charid = user.getSessionVar("charid")
@@ -29,9 +28,7 @@ AddEventHandler('redemrp_clothing:Save', function(ubrania, price, cb)
                     end
             end)
         else
-            print("ZA MALO PIENIEDZY")
             TriggerClientEvent("redemrp_clothing:load2" , source)
-            Wait(1000)
             TriggerClientEvent("redemrp_notification:start",source, "You do not have money" , 2, "error")
         end
 
@@ -71,11 +68,20 @@ AddEventHandler('redemrp_clothing:loadClothes', function(value)
                         ["kamizelka"] = 1,
                         ["spodnie"] = 1,
                         ["maska"] = 1,
-                        ["buty"] =1,
+                        ["buty"] = 1,
                         ["spodnica"] = 1,
                         ["plaszcz"] = 1,
                         ["rekawiczki"] = 1,
                         ["bandana"] = 1,
+                        ["holster"] = 1,
+                        ["belt"] = 1,
+                        ["spur"] = 1,
+                        ["chap"] = 1,
+                        ["poncho"] = 1,
+                        ["beltbuckle"] = 1,
+                        ["cloak"] = 1,
+                        ["satchel"] = 1,
+                        ["offhand"] = 1
 
                     }
                     local json = json.encode(elementy)
