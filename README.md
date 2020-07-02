@@ -10,6 +10,8 @@
 
 [redemrp_skin](https://github.com/RedEM-RP/redemrp_skin/)
 
+[redemrp_menu_base](https://github.com/RedEM-RP/redemrp_menu_base)
+
 ## 2. Installation
 First of all you need to insert the .sql file into your database.
 
