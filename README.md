@@ -1,4 +1,4 @@
-# redemrp_clothing 1.2v
+# redemrp_clothing 2.0v
 
 ## 1. Requirements
 
