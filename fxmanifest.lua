@@ -4,23 +4,30 @@ games { 'rdr3', 'gta5' }
 
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 
-ui_page 'html/h.html'
-
-client_scripts {
-    'client/client.lua',
-	'mp_male.lua',
-	'mp_female.lua',
-	'config.lua'
-} 
-
+-- UI
+ui_page "ui/index.html"
 files {
-    'html/h.html',
-	'html/bg.png',
-	'html/style.css',
-	'html/crock.ttf',
+	"ui/index.html",
+	"ui/assets/*.png",
+	"ui/assets/heritage/*.png",
+	"ui/fonts/*.ttf",
+	"ui/front.js",
+	"ui/script.js",
+	"ui/style.css",
+	'ui/debounce.min.js'
 }
+
+-- Client Scripts
+client_scripts {
+    'client.lua',
+	'config.lua',
+   	'mp_female.lua',
+    'mp_male.lua',
+	'@warmenu/warmenu.lua',
+}
+
+-- Server Scripts
 server_scripts {
-	'server/server.lua',
-	'@mysql-async/lib/MySQL.lua',
+    '@mysql-async/lib/MySQL.lua',     -- MySQL init
+    'server.lua',
 }
-export "startUI"
