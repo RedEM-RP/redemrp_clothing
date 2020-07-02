@@ -1194,7 +1194,7 @@ AddEventHandler('redemrp_clothing:putInTable', function(outfit)
 end)
 
 MenuData = {}
-TriggerEvent("ak_menubase:getData",function(call)
+TriggerEvent("redemrp_menu_base:getData",function(call)
     MenuData = call
 end)
 function Outfits()
