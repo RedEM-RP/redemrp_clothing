@@ -27,4 +27,6 @@ You can use:
 
 [amakuu](http://github.com/amakuu) - Thanks for the redemrp_skin look and files with components
 
+[Naikzer](https://github.com/Naikzer) 
+
 Join discord to get support! - https://discord.gg/FKH4uwb
