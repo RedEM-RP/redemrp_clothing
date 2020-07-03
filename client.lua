@@ -164,7 +164,7 @@ Citizen.CreateThread(function()
                 table.insert(lista_krawaty, v.Hash)
 			elseif v.category == "suspenders" then
                 table.insert(lista_szelki, v.Hash)
-			elseif v.category == "spurs" then
+			elseif v.category == "sprus" then
                 table.insert(lista_ostrogi, v.Hash)
 			elseif v.category == "ponchos" then
                 table.insert(lista_poncho, v.Hash)
