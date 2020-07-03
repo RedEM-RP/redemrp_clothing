@@ -184,47 +184,47 @@ Citizen.CreateThread(function()
         --print("Dzieje sie 2")
         for i, v in ipairs(FemaleComp) do
             if v.category == "hats" then
-                table.insert(lista_kapelusze_f, v.hash)
+                table.insert(lista_kapelusze_f, v.Hash)
             elseif v.category == "shirts" then
-                table.insert(lista_koszula_f, v.hash)
+                table.insert(lista_koszula_f, v.Hash)
             elseif v.category == "vests" then
-                table.insert(lista_kamizelka_f, v.hash)
+                table.insert(lista_kamizelka_f, v.Hash)
             elseif v.category == "pants" then
-                table.insert(lista_spodnie_f, v.hash)
+                table.insert(lista_spodnie_f, v.Hash)
             elseif v.category == "boots" then
-                table.insert(lista_buty_f, v.hash)
+                table.insert(lista_buty_f, v.Hash)
             elseif v.category == "masks" then
-                table.insert(lista_maska_f, v.hash)
+                table.insert(lista_maska_f, v.Hash)
             elseif v.category == "coats" then
-                table.insert(lista_plaszcz_f, v.hash)
+                table.insert(lista_plaszcz_f, v.Hash)
             elseif v.category == "skirts" then
-                table.insert(lista_spodnica, v.hash)
+                table.insert(lista_spodnica, v.Hash)
             elseif v.category == "torsos" then
-                table.insert(femaletorsos, v.hash)
+                table.insert(femaletorsos, v.Hash)
             elseif v.category == "legs" then
-                table.insert(femalelegs, v.hash)
+                table.insert(femalelegs, v.Hash)
             elseif v.category == "gloves" then
-                table.insert(lista_rekawiczki_f, v.hash)
+                table.insert(lista_rekawiczki_f, v.Hash)
             elseif v.category == "neckwear" then
-                table.insert(lista_bandana_f, v.hash)
+                table.insert(lista_bandana_f, v.Hash)
             elseif v.category == "belts" then
-                table.insert(lista_paski_f, v.hash)
+                table.insert(lista_paski_f, v.Hash)
 			elseif v.category == "gunbelts" then
-                table.insert(lista_paskinabron_f, v.hash)
+                table.insert(lista_paskinabron_f, v.Hash)
             elseif v.category == "beltbuckle" then
-                table.insert(lista_klamry_f, v.hash)
+                table.insert(lista_klamry_f, v.Hash)
             elseif v.category == "offhand" then
-                table.insert(lista_kabury_f, v.hash)
+                table.insert(lista_kabury_f, v.Hash)
             elseif v.category == "neckties" then
-                table.insert(lista_krawaty_f, v.hash)
+                table.insert(lista_krawaty_f, v.Hash)
 			elseif v.category == "suspenders" then
-                table.insert(lista_szelki_f, v.hash)
+                table.insert(lista_szelki_f, v.Hash)
 			elseif v.category == "spurs" then
-                table.insert(lista_ostrogi_f, v.hash)
+                table.insert(lista_ostrogi_f, v.Hash)
 			elseif v.category == "ponchos" then
-                table.insert(lista_poncho_f, v.hash)
+                table.insert(lista_poncho_f, v.Hash)
 			elseif v.category == "eyewear" then
-                table.insert(lista_okulary_f, v.hash)
+                table.insert(lista_okulary_f, v.Hash)
             else end
         end
         adding2 = false
