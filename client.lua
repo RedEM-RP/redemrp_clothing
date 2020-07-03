@@ -905,8 +905,8 @@ Citizen.CreateThread(function()
 		 TriggerEvent('redemrp_identity:removeLoadingScreen')
 		end
     else
-			Citizen.InvokeNative(0xD3A7B003ED343FD9, _target,0x10F5497A,true,true,true) -- PANTS
-            Citizen.InvokeNative(0xD3A7B003ED343FD9, _target,0x14511493,true,true,true) -- COAT
+			--Citizen.InvokeNative(0xD3A7B003ED343FD9, _target,0x10F5497A,true,true,true) -- PANTS
+           -- Citizen.InvokeNative(0xD3A7B003ED343FD9, _target,0x14511493,true,true,true) -- COAT
 
             SetEntityAlpha(_target, 0)
             glowna = lista_maska_f
