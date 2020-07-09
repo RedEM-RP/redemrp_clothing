@@ -1,128 +1,138 @@
-Config = {}
-
---[[To add clothes, copy the hash, paste it at the end of the list and add range in slider(_f means women Only MP components work)--]]
-
-local lista_kapelusze = {} --hat
-local lista_kapelusze_f = {}
+local lista = {}
+lista.hat = {} --hat
+lista.hat_f = {}
 ----------------------------------------------------------------------------------------------------------------------------
-local lista_koszula = {} --shirt
-local lista_koszula_f = {}
+lista.shirt = {} --shirt
+lista.shirt_f = {}
 --------------------------------------------------------------------------------------------------------------------------------------
-local lista_kamizelka = {} --vest
-local lista_kamizelka_f = {}
+lista.vest = {} --vest
+lista.vest_f = {}
 --------------------------------------------
-local lista_spodnie = {} --pants
-local lista_spodnie_f = {}
+lista.pants = {} --pants
+lista.pants_f = {}
 ------------------------------------------
-local lista_maska = {} --mask
-local lista_maska_f = {}
+lista.mask = {} --mask
+lista.mask_f = {}
 ------------------------------------------
-local lista_buty = {} --boots
-local lista_buty_f = {}
+lista.boots = {} --boots
+lista.boots_f = {}
 -----------------------------------------
-local lista_plaszcz = {} --coats
-local lista_plaszcz_f = {}
+lista.coat = {} --coats
+lista.coat_f = {}
 ---------------------------------------
-local lista_rekawiczki = {}
-local lista_rekawiczki_f = {}
+lista.rekawiczki = {}
+lista.rekawiczki_f = {}
 -------------------------------------
-local lista_bandana = {}
-local lista_bandana_f = {}
+lista.bandana = {}
+lista.bandana_f = {}
 --------------------------------
-local lista_paskinabron = {}
-local lista_paskinabron_f = {}
+lista.gunbelts = {}
+lista.gunbelts_f = {}
 -------------------------------
-local lista_paski = {}
-local lista_paski_f = {}
+lista.belts = {}
+lista.belts_f = {}
 ---------------------------------
-local lista_klamry ={}
-local lista_klamry_f = {}
+lista.beltbuckle ={}
+lista.beltbuckle_f = {}
 ----------------------------------
-local lista_kabury ={}
-local lista_kabury_f ={}
+lista.offhand ={}
+lista.offhand_f ={}
 -------------------------
-local lista_krawaty = {}
-local lista_krawaty_f = {}
+lista.neckties = {}
+lista.neckties_f = {}
 ------------------------------
-local lista_szelki ={}
-local lista_szelki_f ={}
+lista.suspenders ={}
+lista.suspenders_f ={}
 -------------------------
-local lista_ostrogi = {}
-local lista_ostrogi_f = {}
+lista.spurs = {}
+lista.spurs_f = {}
+-------------------------
+lista.poncho = {}
+lista.poncho_f = {}
+-------------------------
+lista.eyewear = {}
+lista.eyewear_f = {}
+-------------------------
+lista.skirt = {} --skirt
 
-local lista_poncho = {}
-local lista_poncho_f = {}
 
 
-local lista_okulary = {}
-local lista_okulary_f = {}
+
 
 local femaletorsos = {}
 local femalelegs = {}
 local maletorsos = {}
+
 local malelegs = {}
+
+
 local legs = nil
 local legs2 = nil
 local torso = nil
 local torso2 = nil
-local lista_spodnica = {} --skirt
+
 local adding2 = true
 local adding = true
+
 local glowna = lista_kapelusze
 local sex_global = 1
+
 local cam = nil
-local fast = false
 ------------------------------------------
-local 	kapelusz = 1
-local	koszula = 1
-local	kamizelka = 1
-local	plaszcz = 1
-local	spodnie = 1
-local	spodnica = 1
-local	maska = 1
-local	buty = 1
-local	rekawiczki = 1
-local	bandana = 1
-local   paskinabron = 1
-local   paski = 1
-local   klamry = 1
-local   kabury = 1
-local   krawat = 1
-local 	szelki = 1
-local 	ostrogi = 1
-local 	poncho = 1
-local 	okulary = 1
+local ComponentNumber = {}
+ComponentNumber.hat = 1
+ComponentNumber.shirt = 1
+ComponentNumber.vest = 1
+ComponentNumber.coat = 1
+ComponentNumber.pants = 1
+ComponentNumber.skirt = 1
+ComponentNumber.mask = 1
+ComponentNumber.boots = 1
+ComponentNumber.rekawiczki = 1
+ComponentNumber.bandana = 1
+ComponentNumber.gunbelts = 1
+ComponentNumber.belts = 1
+ComponentNumber.beltbuckle = 1
+ComponentNumber.offhand = 1
+ComponentNumber.neckties = 1
+ComponentNumber.suspenders = 1
+ComponentNumber.spurs = 1
+ComponentNumber.poncho = 1
+ComponentNumber.eyewear = 1
 --------------------------------------------
+local clothes_types = {"mask","hat","shirt","vest", "pants", "boots","rekawiczki","bandana","gunbelts", "belts","beltbuckle", "offhand","neckties","suspenders", "spurs","coat","poncho","eyewear","skirt"}
 local isSkinCreatorOpened = false
+
+
+
 
 function ShowSkinCreator(enable , sex)
     local sex1 = sex
     SendNUIMessage({
         openSkinCreator = enable,
         sex = sex1,
-        kapelusz = kapelusz,
-        koszula = koszula,
-        kamizelka = kamizelka,
-        plaszcz = plaszcz,
-        spodnie = spodnie,
-        maska = maska,
-        buty = buty,
-        rekawiczki = rekawiczki,
-        bandana = bandana,
-        spodnica = spodnica,
-        paskinabron = paskinabron,
-        paski = paski,
-        klamry = klamry,
-        kabury = kabury,
-        krawat = krawat,
-		szelki = szelki,
-		ostrogi = ostrogi,
-		poncho = poncho,
-		okulary = okulary,
+        kapelusz = ComponentNumber.hat,
+        koszula = ComponentNumber.shirt,
+        kamizelka = ComponentNumber.vest,
+        plaszcz = ComponentNumber.coat,
+        spodnie = ComponentNumber.pants,
+        maska = ComponentNumber.mask,
+        buty = ComponentNumber.boots,
+        rekawiczki = ComponentNumber.rekawiczki,
+        bandana = ComponentNumber.bandana,
+        spodnica = ComponentNumber.skirt,
+        paskinabron = ComponentNumber.gunbelts,
+        paski = ComponentNumber.belts,
+        klamry = ComponentNumber.beltbuckle,
+        kabury = ComponentNumber.offhand,
+        krawat = ComponentNumber.neckties,
+        szelki = ComponentNumber.suspenders,
+        ostrogi = ComponentNumber.spurs,
+        poncho = ComponentNumber.poncho,
+        okulary = ComponentNumber.eyewear,
     })
-	SetNuiFocus(enable, enable)
+    SetNuiFocus(enable, enable)
 end
-
 
 
 Citizen.CreateThread(function()
@@ -131,45 +141,45 @@ Citizen.CreateThread(function()
         --print("Dzieje sie")
         for i, v in ipairs(MaleComp) do
             if v.category == "hats" then
-                table.insert(lista_kapelusze, v.Hash)
+                table.insert(lista.hat, v.Hash)
             elseif v.category == "shirts" then
-                table.insert(lista_koszula, v.Hash)
+                table.insert(lista.shirt, v.Hash)
             elseif v.category == "vests" then
-                table.insert(lista_kamizelka, v.Hash)
+                table.insert(lista.vest, v.Hash)
             elseif v.category == "pants" then
-                table.insert(lista_spodnie, v.Hash)
+                table.insert(lista.pants, v.Hash)
             elseif v.category == "masks" then
-                table.insert(lista_maska, v.Hash)
+                table.insert(lista.mask, v.Hash)
             elseif v.category == "coats" then
-                table.insert(lista_plaszcz, v.Hash)
+                table.insert(lista.coat, v.Hash)
             elseif v.category == "boots" then
-                table.insert(lista_buty, v.Hash)
+                table.insert(lista.boots, v.Hash)
             elseif v.category == "torsos" then
                 table.insert(maletorsos, v.Hash)
             elseif v.category == "legs" then
                 table.insert(malelegs, v.Hash)
             elseif v.category == "gloves" then
-                table.insert(lista_rekawiczki, v.Hash)
+                table.insert(lista.rekawiczki, v.Hash)
             elseif v.category == "neckwear" then
-                table.insert(lista_bandana, v.Hash)
+                table.insert(lista.bandana, v.Hash)
             elseif v.category == "gunbelts" then
-                table.insert(lista_paskinabron, v.Hash)
+                table.insert(lista.gunbelts, v.Hash)
             elseif v.category == "belts" then
-                table.insert(lista_paski, v.Hash)
+                table.insert(lista.belts, v.Hash)
             elseif v.category == "beltbuckle" then
-                table.insert(lista_klamry, v.Hash)
+                table.insert(lista.beltbuckle, v.Hash)
             elseif v.category == "offhand" then
-                table.insert(lista_kabury, v.Hash)
+                table.insert(lista.offhand, v.Hash)
             elseif v.category == "neckties" then
-                table.insert(lista_krawaty, v.Hash)
-			elseif v.category == "suspenders" then
-                table.insert(lista_szelki, v.Hash)
-			elseif v.category == "spurs" then
-                table.insert(lista_ostrogi, v.Hash)
-			elseif v.category == "ponchos" then
-                table.insert(lista_poncho, v.Hash)
-			elseif v.category == "eyewear" then
-                table.insert(lista_okulary, v.Hash)
+                table.insert(lista.neckties, v.Hash)
+            elseif v.category == "suspenders" then
+                table.insert(lista.suspenders, v.Hash)
+            elseif v.category == "spurs" then
+                table.insert(lista.spurs, v.Hash)
+            elseif v.category == "ponchos" then
+                table.insert(lista.poncho, v.Hash)
+            elseif v.category == "eyewear" then
+                table.insert(lista.eyewear, v.Hash)
             end
         end
         adding = false
@@ -184,52 +194,53 @@ Citizen.CreateThread(function()
         --print("Dzieje sie 2")
         for i, v in ipairs(FemaleComp) do
             if v.category == "hats" then
-                table.insert(lista_kapelusze_f, v.Hash)
+                table.insert(lista.hat_f, v.Hash)
             elseif v.category == "shirts" then
-                table.insert(lista_koszula_f, v.Hash)
+                table.insert(lista.shirt_f, v.Hash)
             elseif v.category == "vests" then
-                table.insert(lista_kamizelka_f, v.Hash)
+                table.insert(lista.vest_f, v.Hash)
             elseif v.category == "pants" then
-                table.insert(lista_spodnie_f, v.Hash)
+                table.insert(lista.pants_f, v.Hash)
             elseif v.category == "boots" then
-                table.insert(lista_buty_f, v.Hash)
+                table.insert(lista.boots_f, v.Hash)
             elseif v.category == "masks" then
-                table.insert(lista_maska_f, v.Hash)
+                table.insert(lista.mask_f, v.Hash)
             elseif v.category == "coats" then
-                table.insert(lista_plaszcz_f, v.Hash)
+                table.insert(lista.coat_f, v.Hash)
             elseif v.category == "skirts" then
-                table.insert(lista_spodnica, v.Hash)
+                table.insert(lista.skirt, v.Hash)
             elseif v.category == "torsos" then
                 table.insert(femaletorsos, v.Hash)
             elseif v.category == "legs" then
                 table.insert(femalelegs, v.Hash)
             elseif v.category == "gloves" then
-                table.insert(lista_rekawiczki_f, v.Hash)
+                table.insert(lista.rekawiczki_f, v.Hash)
             elseif v.category == "neckwear" then
-                table.insert(lista_bandana_f, v.Hash)
+                table.insert(lista.bandana_f, v.Hash)
             elseif v.category == "belts" then
-                table.insert(lista_paski_f, v.Hash)
-			elseif v.category == "gunbelts" then
-                table.insert(lista_paskinabron_f, v.Hash)
+                table.insert(lista.belts_f, v.Hash)
+            elseif v.category == "gunbelts" then
+                table.insert(lista.gunbelts_f, v.Hash)
             elseif v.category == "beltbuckle" then
-                table.insert(lista_klamry_f, v.Hash)
+                table.insert(lista.beltbuckle_f, v.Hash)
             elseif v.category == "offhand" then
-                table.insert(lista_kabury_f, v.Hash)
+                table.insert(lista.offhand_f, v.Hash)
             elseif v.category == "neckties" then
-                table.insert(lista_krawaty_f, v.Hash)
-			elseif v.category == "suspenders" then
-                table.insert(lista_szelki_f, v.Hash)
-			elseif v.category == "spurs" then
-                table.insert(lista_ostrogi_f, v.Hash)
-			elseif v.category == "ponchos" then
-                table.insert(lista_poncho_f, v.Hash)
-			elseif v.category == "eyewear" then
-                table.insert(lista_okulary_f, v.Hash)
+                table.insert(lista.neckties_f, v.Hash)
+            elseif v.category == "suspenders" then
+                table.insert(lista.suspenders_f, v.Hash)
+            elseif v.category == "spurs" then
+                table.insert(lista.spurs_f, v.Hash)
+            elseif v.category == "ponchos" then
+                table.insert(lista.poncho_f, v.Hash)
+            elseif v.category == "eyewear" then
+                table.insert(lista.eyewear_f, v.Hash)
             else end
         end
         adding2 = false
     end
 end)
+
 
 RegisterNetEvent('redemrp_clothing:sex')
 AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
@@ -239,96 +250,93 @@ AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
     if tonumber(_skin.sex) == 1 then
         sex = 1
         sex_global = sex
-         if tonumber(_skin.skincolor) == 1 then
-                    torso = '0x' .. maletorsos[1]
-                    legs = '0x' .. malelegs[1]
-                elseif tonumber(_skin.skincolor) == 2 then
-                    torso = '0x' .. maletorsos[10]
-                    legs = '0x' .. malelegs[10]		
-                elseif tonumber(_skin.skincolor) == 3 then
-                    torso = '0x' .. maletorsos[3]
-                    legs = '0x' .. malelegs[3]
-                elseif tonumber(_skin.skincolor) == 4 then
-                    torso = '0x' .. maletorsos[11]
-                    legs = '0x' .. malelegs[11]
-                elseif tonumber(_skin.skincolor) == 5 then
-                    torso = '0x' .. maletorsos[8]
-                    legs = '0x' .. malelegs[8]
-                elseif tonumber(_skin.skincolor) == 6 then
-                    torso = '0x' .. maletorsos[30]
-                    legs = '0x' .. malelegs[30]
-                else end
-        kapelusz = tonumber( _ubranie.hat)
-        koszula = tonumber(_ubranie.shirt)
-        kamizelka = tonumber(_ubranie.vest)
-        plaszcz =tonumber (_ubranie.coat)
-        spodnie = tonumber(_ubranie.pants)
-        maska = tonumber(_ubranie.mask)
-        buty = tonumber(_ubranie.boots)
-        rekawiczki = tonumber(_ubranie.rekawiczki)
-        bandana = tonumber(_ubranie.bandana)
-        paskinabron = tonumber(_ubranie.gunbelts)
-        paski = tonumber(_ubranie.belts)
-        klamry = tonumber(_ubranie.beltbuckle)
-        kabury = tonumber(_ubranie.offhand)
-        krawat = tonumber(_ubranie.neckties)
-		szelki = tonumber(_ubranie.suspenders)
-		ostrogi = tonumber(_ubranie.spurs)
-		poncho = tonumber(_ubranie.poncho)
-		okulary = tonumber(_ubranie.eyewear)
-        print(kapelusz)
-        print(koszula)
-        print(kamizelka)
-        print(spodnie)
+        if tonumber(_skin.skincolor) == 1 then
+            torso = '0x' .. maletorsos[1]
+            legs = '0x' .. malelegs[1]
+        elseif tonumber(_skin.skincolor) == 2 then
+            torso = '0x' .. maletorsos[10]
+            legs = '0x' .. malelegs[10]
+        elseif tonumber(_skin.skincolor) == 3 then
+            torso = '0x' .. maletorsos[3]
+            legs = '0x' .. malelegs[3]
+        elseif tonumber(_skin.skincolor) == 4 then
+            torso = '0x' .. maletorsos[11]
+            legs = '0x' .. malelegs[11]
+        elseif tonumber(_skin.skincolor) == 5 then
+            torso = '0x' .. maletorsos[8]
+            legs = '0x' .. malelegs[8]
+        elseif tonumber(_skin.skincolor) == 6 then
+            torso = '0x' .. maletorsos[30]
+            legs = '0x' .. malelegs[30]
+        else end
+
+        ComponentNumber.hat =  tonumber( _ubranie.hat)
+        ComponentNumber.shirt =  tonumber( _ubranie.shirt)
+        ComponentNumber.vest =  tonumber( _ubranie.vest)
+        ComponentNumber.coat =  tonumber( _ubranie.coat)
+        ComponentNumber.pants =  tonumber( _ubranie.pants)
+        ComponentNumber.skirt =  tonumber( _ubranie.skirt)
+        ComponentNumber.mask =  tonumber( _ubranie.mask)
+        ComponentNumber.boots =  tonumber( _ubranie.boots)
+        ComponentNumber.rekawiczki =  tonumber( _ubranie.rekawiczki)
+        ComponentNumber.bandana =  tonumber( _ubranie.bandana)
+        ComponentNumber.gunbelts =  tonumber( _ubranie.gunbelts)
+        ComponentNumber.belts =  tonumber( _ubranie.belts)
+        ComponentNumber.beltbuckle =  tonumber( _ubranie.beltbuckle)
+        ComponentNumber.offhand =  tonumber( _ubranie.offhand)
+        ComponentNumber.neckties =  tonumber( _ubranie.neckties)
+        ComponentNumber.suspenders =  tonumber( _ubranie.suspenders)
+        ComponentNumber.spurs =  tonumber( _ubranie.spurs)
+        ComponentNumber.poncho =  tonumber( _ubranie.poncho)
+        ComponentNumber.eyewear =  tonumber( _ubranie.eyewear)
+
     else
         sex = 2
         sex_global = sex
         if tonumber(_skin.skincolor) == 1 then
-                    torso2 = '0x' .. femaletorsos[1]
-                    legs2 = '0x' .. femalelegs[1]
-                elseif tonumber(_skin.skincolor) == 2 then
-                    torso2 = '0x' .. femaletorsos[10]
-                    legs2 = '0x' .. femalelegs[10]
-                elseif tonumber(_skin.skincolor) == 3 then
-                    torso2 = '0x' .. femaletorsos[3]
-                    legs2 = '0x' .. femalelegs[3]
-                elseif tonumber(_skin.skincolor) == 4 then
-                    torso2 = '0x' .. femaletorsos[11]
-                    legs2 = '0x' .. femalelegs[11]
-                elseif tonumber(_skin.skincolor) == 5 then
-                    torso2 = '0x' .. femaletorsos[8]
-                    legs2 = '0x' .. femalelegs[8]
-                elseif tonumber(_skin.skincolor) == 6 then
-                    torso2 = '0x' .. femaletorsos[30]
-                    legs2 = '0x' .. femalelegs[30]
-                else end
-        kapelusz = tonumber( _ubranie.hat)
-        koszula = tonumber(_ubranie.shirt)
-        kamizelka = tonumber(_ubranie.vest)
-        plaszcz =tonumber (_ubranie.coat)
-        spodnie = tonumber(_ubranie.pants)
-        spodnica = tonumber(_ubranie.skirt)
-        maska = tonumber(_ubranie.mask)
-        buty = tonumber(_ubranie.boots)
-        rekawiczki = tonumber(_ubranie.rekawiczki)
-        bandana = tonumber(_ubranie.bandana)
-        paskinabron = tonumber(_ubranie.gunbelts)
-        paski = tonumber(_ubranie.belts)
-        klamry = tonumber(_ubranie.beltbuckle)
-        kabury = tonumber(_ubranie.offhand)
-        krawat = tonumber(_ubranie.neckties)
-		szelki = tonumber(_ubranie.suspenders)
-		ostrogi = tonumber(_ubranie.spurs)
-		poncho = tonumber(_ubranie.poncho)
-		okulary = tonumber(_ubranie.eyewear)
+            torso2 = '0x' .. femaletorsos[1]
+            legs2 = '0x' .. femalelegs[1]
+        elseif tonumber(_skin.skincolor) == 2 then
+            torso2 = '0x' .. femaletorsos[10]
+            legs2 = '0x' .. femalelegs[10]
+        elseif tonumber(_skin.skincolor) == 3 then
+            torso2 = '0x' .. femaletorsos[3]
+            legs2 = '0x' .. femalelegs[3]
+        elseif tonumber(_skin.skincolor) == 4 then
+            torso2 = '0x' .. femaletorsos[11]
+            legs2 = '0x' .. femalelegs[11]
+        elseif tonumber(_skin.skincolor) == 5 then
+            torso2 = '0x' .. femaletorsos[8]
+            legs2 = '0x' .. femalelegs[8]
+        elseif tonumber(_skin.skincolor) == 6 then
+            torso2 = '0x' .. femaletorsos[30]
+            legs2 = '0x' .. femalelegs[30]
+        else end
+        ComponentNumber.hat =  tonumber( _ubranie.hat)
+        ComponentNumber.shirt =  tonumber( _ubranie.shirt)
+        ComponentNumber.vest =  tonumber( _ubranie.vest)
+        ComponentNumber.coat =  tonumber( _ubranie.coat)
+        ComponentNumber.pants =  tonumber( _ubranie.pants)
+        ComponentNumber.skirt =  tonumber( _ubranie.skirt)
+        ComponentNumber.mask =  tonumber( _ubranie.mask)
+        ComponentNumber.boots =  tonumber( _ubranie.boots)
+        ComponentNumber.rekawiczki =  tonumber( _ubranie.rekawiczki)
+        ComponentNumber.bandana =  tonumber( _ubranie.bandana)
+        ComponentNumber.gunbelts =  tonumber( _ubranie.gunbelts)
+        ComponentNumber.belts =  tonumber( _ubranie.belts)
+        ComponentNumber.beltbuckle =  tonumber( _ubranie.beltbuckle)
+        ComponentNumber.offhand =  tonumber( _ubranie.offhand)
+        ComponentNumber.neckties =  tonumber( _ubranie.neckties)
+        ComponentNumber.suspenders =  tonumber( _ubranie.suspenders)
+        ComponentNumber.spurs =  tonumber( _ubranie.spurs)
+        ComponentNumber.poncho =  tonumber( _ubranie.poncho)
+        ComponentNumber.eyewear =  tonumber( _ubranie.eyewear)
     end
     ShowSkinCreator(true, sex)
     isSkinCreatorOpened = true
     camera(2.8,-0.15)
-	print(torso)
-	print(legs)
-
 end)
+
 
 RegisterCommand("loadcloath", function(source, args)
     TriggerServerEvent("redemrp_clothing:loadClothes", 1, function(cb)
@@ -336,26 +344,25 @@ RegisterCommand("loadcloath", function(source, args)
 end)
 
 RegisterNUICallback('exit', function()
-    TriggerEvent("redemrp_skin:FastLoad")
+    TriggerServerEvent("redemrp_skin:loadSkin")
     isSkinCreatorOpened = false
     ShowSkinCreator(false)
     destory()
 end)
+
 RegisterNUICallback('saveClothes', function(data, cb)
     SetNuiFocus(false, false)
-
     local ped = PlayerPedId()
+	 local saveOutfit = false
+    local json = json.encode(data)
     FreezeEntityPosition(ped, false)
     DisplayHud(true)
     DisplayRadar(true)
     SetCamActive(cam, false)
     DestroyCam(cam, true)
-    local saveOutfit = false
-    local price = Config.Price
-    local json = json.encode(data)
     if data.name ~= nil and data.name ~= "" then
         saveOutfit = true
-        TriggerServerEvent("redemrp_clothing:Save", json, price, saveOutfit , data.name, function(cb)
+        TriggerServerEvent("redemrp_clothing:Save", json, saveOutfit , data.name, function(cb)
             if cb then
                 print("DONE")
             else
@@ -364,7 +371,7 @@ RegisterNUICallback('saveClothes', function(data, cb)
         end)
     else
 
-        TriggerServerEvent("redemrp_clothing:Save", json, price, saveOutfit ,function(cb)
+        TriggerServerEvent("redemrp_clothing:Save", json, saveOutfit ,function(cb)
             if cb then
                 print("DONE")
             else
@@ -372,24 +379,11 @@ RegisterNUICallback('saveClothes', function(data, cb)
             end
         end)
     end
-
-
-    --	print("tak2")
     DestroyAllCams()
     isSkinCreatorOpened = false
     ShowSkinCreator(false)
-	 TriggerServerEvent("redemrp_clothing:loadClothes", 3, function(cb)
-        end)
+	 TriggerServerEvent("redemrp_clothing:loadClothes", 3 )
 end)
-
-
-RegisterNetEvent('redemrp_clothing:load2')
-AddEventHandler('redemrp_clothing:load2', function()
-    TriggerServerEvent("redemrp_clothing:loadClothes", 1, function(cb)
-        end)
-    fast = true
-end)
-
 
 
 
@@ -397,310 +391,158 @@ RegisterNUICallback('updateClothes', function(data, cb)
     TriggerEvent("redemrp_clothing:updateClothes" , data)
 end)
 
+
 RegisterNetEvent('redemrp_clothing:updateClothes')
 AddEventHandler('redemrp_clothing:updateClothes', function(data)
-    if sex_global == 1 then
-        glowna = lista_kapelusze
-    else
-        glowna = lista_kapelusze_f
-    end
-    if kapelusz ~= tonumber(data.hat) and data.hat ~= nil then
-        kapelusz = tonumber(data.hat)
-        zmiana(data.hat)
-        camera(0.9,0.6)
-    end
-	 if sex_global == 1 then
-        glowna = lista_okulary
-    else
-        glowna = lista_okulary_f
-	end
-	if okulary ~= tonumber(data.eyewear) and data.eyewear ~= nil then
-        okulary = tonumber(data.eyewear)
-        zmiana(data.eyewear)
-        camera(0.9,0.6)
-    end
-    if sex_global == 1 then
-        glowna = lista_poncho
-    else
-        glowna = lista_poncho_f
-    end
-    if poncho ~= tonumber(data.poncho) and data.poncho ~= nil then
-        poncho = tonumber(data.poncho)
-        zmiana(data.poncho)
-        camera(1.5,0.4)
-    end
-	
-	 if sex_global == 1 then
-        glowna = lista_koszula
-    else
-        glowna = lista_koszula_f
-    end
-    if koszula ~= tonumber(data.shirt) and data.shirt ~= nil then
-        koszula = tonumber(data.shirt)
-        zmiana(data.shirt)
-        camera(1.5,0.4)
-    end
-    if sex_global == 1 then
-        glowna = lista_kamizelka
-    else
-        glowna = lista_kamizelka_f
-    end
-    if kamizelka ~= tonumber(data.vest)  and data.vest ~= nil then
-        kamizelka = tonumber(data.vest)
-        zmiana(data.vest)
-        camera(1.5,0.4)
-    end
-    if sex_global == 1 then
-        glowna = lista_plaszcz
-    else
-        glowna = lista_plaszcz_f
-    end
-    if plaszcz ~= tonumber(data.coat)  and data.coat ~= nil then
-        plaszcz = tonumber(data.coat)
-		Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x662AC34, 0) -- Set target category, here the hash is for hats
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-		Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xE06D30CE, 0) -- Set target category, here the hash is for hats
-        Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
-        zmiana(data.coat)
-        camera(1.6,0.4)
 
-    end
-    if sex_global == 1 then
-        glowna = lista_spodnie
-    else
-        glowna = lista_spodnie_f
-    end
-    if spodnie ~= tonumber(data.pants) and data.pants ~= nil  then
-        spodnie = tonumber(data.pants)
-        zmiana(data.pants)
-        camera(1.6,-0.4)
-
-    end
-    if sex_global == 1 then
-        glowna = lista_paskinabron
-    else
-        glowna = lista_paskinabron_f
-    end
-    if paskinabron ~= tonumber(data.gunbelts) and data.gunbelts ~= nil  then
-        paskinabron = tonumber(data.gunbelts)
-        zmiana(data.gunbelts)
-         camera(1.7,-0.3)
-
-    end
-    if sex_global == 1 then
-        glowna = lista_paski
-    else
-        glowna = lista_paski_f
-    end
-    if paski ~= tonumber(data.belts) and data.belts ~= nil  then
-        paski = tonumber(data.belts)
-        zmiana(data.belts)
-         camera(1.7,-0.3)
-
-    end
-    if sex_global == 1 then
-        glowna = lista_klamry
-    else
-        glowna = lista_klamry_f
-    end
-    if klamry ~= tonumber(data.beltbuckle) and data.beltbuckle ~= nil  then
-        klamry = tonumber(data.beltbuckle)
-        zmiana(data.beltbuckle)
-        camera(1.7,-0.3)
-
-    end
-    if sex_global == 1 then
-        glowna = lista_kabury
-    else
-        glowna = lista_kabury_f
-    end
-    if kabury ~= tonumber(data.offhand) and data.offhand ~= nil  then
-        kabury = tonumber(data.offhand)
-        zmiana(data.offhand)
-        camera(1.7,-0.3)
-
-    end
-
-    if sex_global == 1 then
-        glowna = lista_krawaty
-    else
-        glowna = lista_krawaty_f
-    end
-    if krawat ~= tonumber(data.neckties) and data.neckties ~= nil  then
-        krawat = tonumber(data.neckties)
-        zmiana(data.neckties)
-        camera(0.9,0.3)
-
-    end
-	 if sex_global == 1 then
-        glowna = lista_szelki
-    else
-        glowna = lista_szelki_f
-    end
-    if szelki ~= tonumber(data.suspenders) and data.suspenders ~= nil  then
-        szelki = tonumber(data.suspenders)
-        zmiana(data.suspenders)
-        camera(1.5,0.4)
-
-    end
-    if sex_global == 1 then
-        glowna = lista_maska
-    else
-        glowna = lista_maska_f
-    end
-    if maska ~= tonumber(data.mask) and data.mask ~= nil then
-        maska = tonumber(data.mask)
-        zmiana(data.mask)
-        camera(0.9,0.6)
-    end
-    if sex_global == 1 then
-        glowna = lista_buty
-    else
-        glowna = lista_buty_f
-    end
-    if buty ~= tonumber(data.boots)  and data.boots ~= nil then
-        buty = tonumber(data.boots)
-        zmiana(data.boots)
-        camera(1.6,-0.6)
-    end
-    if sex_global == 1 then
-        glowna = lista_rekawiczki
-    else
-        glowna = lista_rekawiczki_f
-    end
-    if rekawiczki ~= tonumber(data.rekawiczki)  and data.rekawiczki ~= nil then
-        rekawiczki = tonumber(data.rekawiczki)
-        zmiana(data.rekawiczki)
-        camera(1.6,-0.2)
-    end
-    if sex_global == 1 then
-        glowna = lista_bandana
-    else
-        glowna = lista_bandana_f
-    end
-    if bandana ~= tonumber(data.bandana)  and data.bandana ~= nil then
-        bandana = tonumber(data.bandana)
-        zmiana(data.bandana)
-        camera(0.9,0.6)
-    end
-	 if sex_global == 1 then
-        glowna = lista_ostrogi
-    else
-        glowna = lista_ostrogi_f
-    end
-    if ostrogi ~= tonumber(data.spurs)  and data.spurs ~= nil then
-        ostrogi = tonumber(data.spurs)
-        zmiana(data.spurs)
-       camera(1.6,-0.6)
-    end
-    if sex_global == 2 then
-        glowna = lista_spodnica
-
-        if spodnica ~= tonumber(data.skirt)  and data.skirt ~= nil then
-            spodnica = tonumber(data.skirt)
-            zmiana(data.skirt)
-            camera(1.6,-0.4)
+        for v,k in pairs(clothes_types) do
+            if ComponentNumber[k] ~=  tonumber(data[k]) and data[k] ~= nil then
+                if sex_global == 1 then
+                    glowna = lista[k]
+                else
+                    glowna = lista[k.."_f"]
+                end
+                ComponentNumber[k] = tonumber(data[k])
+                if k == "coat" then
+                    Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x662AC34, 0) -- Set target category, here the hash is for hats
+                    Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
+                    Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xE06D30CE, 0) -- Set target category, here the hash is for hats
+                    Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
+                end
+                zmiana(data[k])
+                if k == "hat" then
+                    camera(0.9,0.6)
+                elseif k == "poncho" then
+                    camera(1.5,0.4)
+                elseif k == "shirt" then
+                    camera(1.5,0.4)
+                elseif k == "vest" then
+                    camera(1.5,0.4)
+                elseif k == "coat" then
+                    camera(1.6,0.4)
+                elseif k == "pants" then
+                    camera(1.6,-0.4)
+                elseif k == "gunbelts" then
+                    camera(1.7,-0.3)
+                elseif k == "belts" then
+                    camera(1.7,-0.3)
+                elseif k == "beltbuckle" then
+                    camera(1.7,-0.3)
+                elseif k == "offhand" then
+                    camera(1.7,-0.3)
+                elseif k == "neckties" then
+                    camera(0.9,0.3)
+                elseif k == "suspenders" then
+                    camera(1.5,0.4)
+                elseif k == "mask" then
+                    camera(0.9,0.6)
+                elseif k == "boots" then
+                    camera(1.6,-0.6)
+                elseif k == "rekawiczki" then
+                    camera(1.6,-0.2)
+                elseif k == "bandana" then
+                    camera(0.9,0.6)
+                elseif k == "spurs" then
+                    camera(1.6,-0.6)
+                elseif k == "skirt" then
+                    camera(1.6,-0.4)
+                end
+            end
         end
-    end
 
 end)
 
 
 
-
-
 function zmiana(wartosc)
     local wartosc2 = tonumber(wartosc)
-	print(wartosc2)
     local hash = ("0x" .. glowna[wartosc2])
-	print(hash)
-    --print(glowna[wartosc2])
-		
-   if glowna == lista_koszula_f  then
-        Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(torso2),false,true,true)		
-    end	
-    if glowna == lista_spodnie_f and wartosc2 <= 1  then
+
+    if glowna == lista["shirt_f"]  then
+        Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(torso2),false,true,true)
+    end
+    if glowna == lista["pants_f"] and wartosc2 <= 1  then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x1D4C528A, 0) -- Set target category, here the hash is for hats
         Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(legs2),false,true,true)
 
 
-    elseif glowna == lista_spodnie and wartosc2 <= 1 then
+    elseif glowna == lista["pants"] and wartosc2 <= 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x1D4C528A, 0) -- Set target category, here the hash is for hats
         Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(legs),false,true,true)
 
 
-    elseif glowna == lista_koszula and wartosc2 <= 1  then
+    elseif glowna == lista["shirt"] and wartosc2 <= 1  then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x2026C46D, 0) -- Set target category, here the hash is for hats
         Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(torso),false,true,true)
 
 
-    elseif glowna == lista_koszula_f and wartosc2 <= 1 then
+    elseif glowna == lista["shirt_f"] and wartosc2 <= 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x2026C46D, 0) -- Set target category, here the hash is for hats
         Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(torso2),false,true,true)
 
 
-    elseif (glowna == lista_maska_f or glowna == lista_maska) and wartosc2 == 1 then
+    elseif (glowna == lista["mask_f"] or glowna == lista["mask"]) and wartosc2 == 1 then
 
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x7505EF42, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_rekawiczki or glowna == lista_rekawiczki_f) and wartosc2 == 1 then
+    elseif (glowna == lista["rekawiczki"] or glowna == lista["rekawiczki_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xEABE0032, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_bandana or glowna == lista_bandana_f) and wartosc2 == 1 then
+    elseif (glowna == lista["bandana"] or glowna == lista["bandana_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x5FC29285, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_kapelusze_f or glowna == lista_kapelusze) and wartosc2 == 1 then
+    elseif (glowna == lista["hat"] or glowna == lista["hat_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x9925C067, 0) -- Set target category, here the hash is for hats
 
 
-    elseif glowna == lista_spodnica and wartosc2 == 1 then
+    elseif glowna == lista["skirt"] and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xA0E3AB7F, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_plaszcz_f or glowna == lista_plaszcz) and wartosc2 == 1 then
+    elseif (glowna == lista["coat"] or glowna == lista["coat_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x662AC34, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_kamizelka_f or glowna == lista_kamizelka) and wartosc2 == 1 then
+    elseif (glowna == lista["vest_f"] or glowna == lista["vest"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x485EE834, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_paskinabron or glowna == lista_paskinabron_f) and wartosc2 == 1 then
+    elseif (glowna == lista["gunbelts"] or glowna == lista["gunbelts_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x9B2C8B89, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_paski or glowna == lista_paski_f) and wartosc2 == 1 then
+    elseif (glowna == lista["belts"] or glowna == lista["belts_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xA6D134C6, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_klamry_f or glowna == lista_klamry) and wartosc2 == 1 then
+    elseif (glowna == lista["beltbuckle"] or glowna == lista["beltbuckle_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xFAE9107F, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_kabury or glowna == lista_kabury_f) and wartosc2 == 1 then
+    elseif (glowna == lista["offhand"] or glowna == lista["offhand_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xB6B6122D, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista_krawaty or glowna == lista_krawaty_f) and wartosc2 == 1 then
+    elseif (glowna == lista["neckties"] or glowna == lista["neckties_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x7A96FACA, 0) -- Set target category, here the hash is for hats
 
-		
-	elseif (glowna == lista_bandana_f or glowna == lista_szelki) and wartosc2 == 1 then
+
+    elseif (glowna == lista["suspenders"] or glowna == lista["suspenders_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x877A2CF7, 0) -- Set target category, here the hash is for hats
 
-		
-	elseif (glowna == lista_ostrogi or glowna == lista_ostrogi_f) and wartosc2 == 1 then
+
+    elseif (glowna == lista["spurs"] or glowna == lista["spurs_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x18729F39, 0) -- Set target category, here the hash is for hats
-		
-		
-	elseif (glowna == lista_poncho or glowna == lista_poncho_f) and wartosc2 == 1 then
+
+
+    elseif (glowna == lista["poncho"] or glowna == lista["poncho_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xAF14310B, 0) -- Set target category, here the hash is for hats
-		
-		
-	elseif (glowna == lista_okulary or glowna == lista_okulary_f) and wartosc2 == 1 then
+
+
+    elseif (glowna == lista["eyewear"] or glowna == lista["eyewear_f"]) and wartosc2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x5E47CA6, 0) -- Set target category, here the hash is for hats
 
 
@@ -711,382 +553,64 @@ function zmiana(wartosc)
 
     end
 
-			Citizen.InvokeNative(0x704C908E9C405136, PlayerPedId())
-			Citizen.InvokeNative(0xAAB86462966168CE, PlayerPedId(), 1)
-			Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)	
+    Citizen.InvokeNative(0x704C908E9C405136, PlayerPedId())
+    Citizen.InvokeNative(0xAAB86462966168CE, PlayerPedId(), 1)
+    Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
 end
+
 
 
 RegisterNetEvent('redemrp_clothing:load')
 AddEventHandler('redemrp_clothing:load', function(skin, ubranie , target)
-Citizen.CreateThread(function()
-	local _target 
-	 local _skin  
-    local _ubranie 
-	local _t = target
-	if _t ~= nil then
-	_target = _t
-	 _skin = skin
-     _ubranie = ubranie
-	else
-	_target = PlayerPedId()
-	_skin = json.decode(skin)
-    _ubranie = json.decode(ubranie)
-	end
-   
-    local sex = 1
-    local hash = nil
-    local wartosc = 1
-    --print (_skin.sex)
-    print(tonumber(_skin.sex))
-    if tonumber(_skin.sex) == 1 then
-        sex = 1
-    else
-        sex = 2
-    end
-    if sex == 1 then
-
-            SetEntityAlpha(_target, 0)
-            glowna = lista_maska
-            wartosc = tonumber(_ubranie.mask)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło5")
+    Citizen.CreateThread(function()
+        local _target
+        local test = false
+        local _skin
+        local _ubranie
+        local _t = target
+        if _t ~= nil then
+            _target = _t
+            _skin = skin
+            _ubranie = ubranie
+        else
+            _target = PlayerPedId()
+            _skin = json.decode(skin)
+            _ubranie = json.decode(ubranie)
+        end
+        SetEntityAlpha(_target, 0)
+        while test == false do
+            for v,k in pairs(clothes_types) do
+				Wait(1)
+                if tonumber(_skin.sex) == 1 then
+                    glowna = lista[k]
+                else
+                    glowna = lista[k.."_f"]
+                end
+                local wartosc = tonumber(_ubranie[k])
+                if wartosc > 1 then
+                    local hash = ("0x" .. glowna[wartosc])
+                    Citizen.InvokeNative(0xD3A7B003ED343FD9 , _target, tonumber(hash), false, true, true)
+                end
             end
-            glowna = lista_kapelusze
-            wartosc = tonumber(_ubranie.hat)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło1")
-            end
-            glowna = lista_koszula
-            wartosc = tonumber(_ubranie.shirt)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło2")
-            end
-            glowna = lista_kamizelka
-            wartosc = tonumber(_ubranie.vest)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło3")
-            end
-            glowna = lista_spodnie
-            wartosc = tonumber(_ubranie.pants)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło4")
-            end
-            glowna = lista_buty
-            wartosc = tonumber(_ubranie.boots)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_rekawiczki
-            wartosc = tonumber(_ubranie.rekawiczki)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_bandana
-            wartosc = tonumber(_ubranie.bandana)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_paskinabron
-            wartosc = tonumber(_ubranie.gunbelts)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_paski
-            wartosc = tonumber(_ubranie.belts)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_klamry
-            wartosc = tonumber(_ubranie.beltbuckle)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_kabury
-            wartosc = tonumber(_ubranie.offhand)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
+			
+            Citizen.InvokeNative(0x704C908E9C405136, _target)
+            Citizen.InvokeNative(0xAAB86462966168CE, _target, 1)
+            Citizen.InvokeNative(0xCC8CA3E88256E58F, _target, 0, 1, 1, 1, 0)
+            Wait(500)
+            test = Citizen.InvokeNative(0xA0BC8FAED8CFEB3C, _target)
+			
+        end
 		
-            glowna = lista_krawaty
-            wartosc = tonumber(_ubranie.neckties)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_szelki
-            wartosc = tonumber(_ubranie.suspenders)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_ostrogi
-            wartosc = tonumber(_ubranie.spurs)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_plaszcz
-            wartosc = tonumber(_ubranie.coat)
-            if wartosc > 1 then		
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło1")
-            end	
-			 glowna = lista_poncho
-            wartosc = tonumber(_ubranie.poncho)
-			if wartosc == nil then
-				wartosc = 1
-			end
-            if wartosc > 1 then		
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło1")
-            end
-			
-			glowna = lista_okulary
-            wartosc = tonumber(_ubranie.eyewear)
-			if wartosc == nil then
-				wartosc = 1
-			end
-            if wartosc > 1 then		
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło1")
-            end
-        SetEntityAlpha(_target, 255)	
-		Citizen.InvokeNative(0x704C908E9C405136, _target)
-		Citizen.InvokeNative(0xAAB86462966168CE, _target, 1)
-		Citizen.InvokeNative(0xCC8CA3E88256E58F, _target, 0, 1, 1, 1, 0) -- Actually remove the component
-		 TriggerServerEvent('redemrp_respawn:TestStatus')
-		if _t ~= nil then
-		 TriggerEvent('redemrp_identity:removeLoadingScreen')
-		end
-    else
-			--Citizen.InvokeNative(0xD3A7B003ED343FD9, _target,0x10F5497A,true,true,true) -- PANTS
-           -- Citizen.InvokeNative(0xD3A7B003ED343FD9, _target,0x14511493,true,true,true) -- COAT
-
-            SetEntityAlpha(_target, 0)
-            glowna = lista_maska_f
-            wartosc = tonumber(_ubranie.mask)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło5")
-            end
-            glowna = lista_kapelusze_f
-            wartosc = tonumber(_ubranie.hat)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło1")
-            end
-            glowna = lista_koszula_f
-            wartosc = tonumber(_ubranie.shirt)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło2")
-            end
-            glowna = lista_kamizelka_f
-            wartosc = tonumber(_ubranie.vest)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło3")
-            end
-            glowna = lista_spodnie_f
-            wartosc = tonumber(_ubranie.pants)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło4")
-            end
-            glowna = lista_buty_f
-            wartosc = tonumber(_ubranie.boots)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_spodnica
-            wartosc = tonumber(_ubranie.skirt)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło7")
-            end
-            glowna = lista_rekawiczki_f
-            wartosc = tonumber(_ubranie.rekawiczki)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_bandana_f
-            wartosc = tonumber(_ubranie.bandana)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_paskinabron_f	
-            wartosc = tonumber(_ubranie.gunbelts)
-			print(wartosc)
-			print(glowna[wartosc])
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_paski_f
-            wartosc = tonumber(_ubranie.belts)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-
-            glowna = lista_klamry_f
-            wartosc = tonumber(_ubranie.beltbuckle)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_kabury_f
-            wartosc = tonumber(_ubranie.offhand)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-
-            glowna = lista_krawaty_f
-            wartosc = tonumber(_ubranie.neckties)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_szelki_f
-            wartosc = tonumber(_ubranie.suspenders)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_ostrogi_f
-            wartosc = tonumber(_ubranie.spurs)
-            if wartosc > 1 then
-                --print(wartosc)
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło6")
-            end
-            glowna = lista_plaszcz_f
-            wartosc = tonumber(_ubranie.coat)
-            if wartosc > 1 then	
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło1")
-            end
-		 glowna = lista_poncho_f
-            wartosc = tonumber(_ubranie.poncho)
-			if wartosc == nil then
-				wartosc = 1
-			end
-            if wartosc > 1 then		
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło1")
-            end
-			
-			glowna = lista_okulary_f
-            wartosc = tonumber(_ubranie.eyewear)
-			if wartosc == nil then
-				wartosc = 1
-			end
-            if wartosc > 1 then		
-                hash = ("0x" .. glowna[wartosc])
-                ladowanie(hash, _target)
-                --print("poszło1")
-            end
         SetEntityAlpha(_target, 255)
-		Citizen.InvokeNative(0x704C908E9C405136, _target)
-		Citizen.InvokeNative(0xAAB86462966168CE, _target, 1)
-		Citizen.InvokeNative(0xCC8CA3E88256E58F, _target, 0, 1, 1, 1, 0) -- Actually remove the component
-		 TriggerServerEvent('redemrp_respawn:TestStatus')
-        fast = false	
-		print("test o tak")
-		if _t ~= nil then
-		 TriggerEvent('redemrp_identity:removeLoadingScreen')
-		end
-    end
-	end)
+        if _t ~= nil then
+            TriggerEvent('redemrp_identity:removeLoadingScreen')
+        end
+		
+    end)
 end)
 
-function ladowanie(hash, target)
-		local _target = target
-		Citizen.InvokeNative(0xD3A7B003ED343FD9 , _target,   tonumber(hash), false, true, true)
-end
+
+
 
 local headingss = 334.00
 RegisterNUICallback('heading', function(data)
@@ -1094,6 +618,7 @@ RegisterNUICallback('heading', function(data)
     headingss = headingss + data.value
     SetEntityHeading(playerPed, headingss)
 end)
+
 RegisterNUICallback('defcam', function(data)
  camera(2.8,-0.15)
 end)
@@ -1157,16 +682,6 @@ function camera(zoom, offset)
     DisplayRadar(false)
 end
 
-function DrawTxt(str, x, y, w, h, enableShadow, col1, col2, col3, a, centre)
-    local str = CreateVarString(10, "LITERAL_STRING", str, Citizen.ResultAsLong())
-    SetTextScale(w, h)
-    SetTextColor(math.floor(col1), math.floor(col2), math.floor(col3), math.floor(a))
-    SetTextCentre(centre)
-    if enableShadow then SetTextDropshadow(1, 0, 0, 0, 255) end
-	Citizen.InvokeNative(0xADA9255D, 10);
-	DisplayText(str, x, y)
-end
-
 Citizen.CreateThread(function()
 	Wait(0)
 	for k,v in pairs(Config.Zones) do
@@ -1176,6 +691,13 @@ Citizen.CreateThread(function()
 		Citizen.InvokeNative(0x9CB1A1623062F402, blip, Config.BlipName)
 	end
 end)
+
+
+
+
+
+
+
 
 local Outfits_tab = {}
 RegisterNetEvent('redemrp_clothing:OpenOutfits')
@@ -1192,6 +714,8 @@ AddEventHandler('redemrp_clothing:putInTable', function(outfit)
     end
 	 Outfits()
 end)
+
+
 
 MenuData = {}
 TriggerEvent("redemrp_menu_base:getData",function(call)
@@ -1311,7 +835,7 @@ Citizen.CreateThread(function()
                     local str = Citizen.InvokeNative(0xFA925AC00EB830B9, 10, "LITERAL_STRING", " ", Citizen.ResultAsLong())
                     Citizen.InvokeNative(0xFA233F8FE190514C, str)
                     Citizen.InvokeNative(0xE9990552DEC71600)
-					active = false
+                    active = false
                 end
             end
         end
@@ -1320,5 +844,6 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
 
 
