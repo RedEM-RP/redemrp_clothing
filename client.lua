@@ -592,13 +592,12 @@ AddEventHandler('redemrp_clothing:load', function(skin, ubranie , target)
                     Citizen.InvokeNative(0xD3A7B003ED343FD9 , _target, tonumber(hash), false, true, true)
                 end
             end
-			
+			Wait(500)
             Citizen.InvokeNative(0x704C908E9C405136, _target)
             Citizen.InvokeNative(0xAAB86462966168CE, _target, 1)
             Citizen.InvokeNative(0xCC8CA3E88256E58F, _target, 0, 1, 1, 1, 0)
             Wait(500)
-            test = Citizen.InvokeNative(0xA0BC8FAED8CFEB3C, _target)
-			
+            test = Citizen.InvokeNative(0xA0BC8FAED8CFEB3C, _target)			
         end
 		
         SetEntityAlpha(_target, 255)
@@ -691,11 +690,6 @@ Citizen.CreateThread(function()
 		Citizen.InvokeNative(0x9CB1A1623062F402, blip, Config.BlipName)
 	end
 end)
-
-
-
-
-
 
 
 
@@ -844,6 +838,3 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-
-
