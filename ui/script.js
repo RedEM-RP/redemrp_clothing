@@ -16,29 +16,29 @@ var sex = 1
     }
 	
 	function Load(){
-//console.log(event.data.kapelusz);
+//console.log(event.data.hat);
 sex = event.data.sex
-//console.log(event.data.spodnie);
+//console.log(event.data.pants);
 //console.log(event.data.sex);
-document.getElementById("hat").value = event.data.kapelusz;
-document.getElementById("shirt").value = event.data.koszula;
-document.getElementById("vest").value = event.data.kamizelka;
-document.getElementById("pants").value = event.data.spodnie;
-document.getElementById("mask").value = event.data.maska;
-document.getElementById("boots").value = event.data.buty;
-document.getElementById("skirt").value = event.data.spodnica;
-document.getElementById("coat").value = event.data.plaszcz;
-document.getElementById("gloves").value = event.data.rekawiczki;
+document.getElementById("hat").value = event.data.hat;
+document.getElementById("shirt").value = event.data.shirt;
+document.getElementById("vest").value = event.data.vest;
+document.getElementById("pants").value = event.data.pants;
+document.getElementById("mask").value = event.data.mask;
+document.getElementById("boots").value = event.data.shoes;
+document.getElementById("skirt").value = event.data.dress;
+document.getElementById("coat").value = event.data.coat;
+document.getElementById("gloves").value = event.data.gloves;
 document.getElementById("bandana").value = event.data.bandana;		
-document.getElementById("gunbelts").value = event.data.paskinabron;
-document.getElementById("belts").value = event.data.paski;
-document.getElementById("beltbuckle").value = event.data.klamry;
-document.getElementById("offhand").value = event.data.kabury;
-document.getElementById("neckties").value = event.data.krawat;
-document.getElementById("suspenders").value = event.data.szelki;
-document.getElementById("spurs").value = event.data.ostrogi;
+document.getElementById("gunbelts").value = event.data.gunbelts;
+document.getElementById("belts").value = event.data.belts;
+document.getElementById("beltbuckle").value = event.data.buckle;
+document.getElementById("offhand").value = event.data.offhand;
+document.getElementById("neckties").value = event.data.tie;
+document.getElementById("suspenders").value = event.data.suspenders;
+document.getElementById("spurs").value = event.data.spurs;
 document.getElementById("poncho").value = event.data.poncho;
-document.getElementById("eyewear").value = event.data.okulary;
+document.getElementById("eyewear").value = event.data.glasses;
 	  if(sex == 1){
 	$("#skirt").css("display","none");  
 	  }
@@ -62,7 +62,7 @@ document.getElementById("eyewear").value = event.data.okulary;
 	  boots: $('.boots').val(),
 	  skirt: $('.skirt').val(),
 	  coat: $('.coat').val(),
-	  rekawiczki: $('.gloves').val(),
+	  gloves: $('.gloves').val(),
 	  bandana: $('.bandana').val(),
 	  gunbelts: $('.gunbelts').val(),
 	  belts: $('.belts').val(),
@@ -90,7 +90,7 @@ document.getElementById("eyewear").value = event.data.okulary;
 	  boots: $('.boots').val(),
 	  skirt: $('.skirt').val(),
 	  coat: $('.coat').val(),
-	  rekawiczki: $('.gloves').val(),
+	  gloves: $('.gloves').val(),
 	  bandana: $('.bandana').val(),
       gunbelts: $('.gunbelts').val(),
 	  belts: $('.belts').val(),
@@ -117,7 +117,7 @@ document.getElementById("eyewear").value = event.data.okulary;
 	  boots: $('.boots').val(),
 	  skirt: $('.skirt').val(),
 	  coat: $('.coat').val(),
-	  rekawiczki: $('.gloves').val(),
+	  gloves: $('.gloves').val(),
 	  bandana: $('.bandana').val(),
 	  gunbelts: $('.gunbelts').val(),
 	  belts: $('.belts').val(),
