@@ -1,59 +1,59 @@
-local lista = {}
-lista.hat = {} --hat
-lista.hat_f = {}
+local list = {}
+list.hat = {} --hat
+list.hat_f = {}
 ----------------------------------------------------------------------------------------------------------------------------
-lista.shirt = {} --shirt
-lista.shirt_f = {}
+list.shirt = {} --shirt
+list.shirt_f = {}
 --------------------------------------------------------------------------------------------------------------------------------------
-lista.vest = {} --vest
-lista.vest_f = {}
+list.vest = {} --vest
+list.vest_f = {}
 --------------------------------------------
-lista.pants = {} --pants
-lista.pants_f = {}
+list.pants = {} --pants
+list.pants_f = {}
 ------------------------------------------
-lista.mask = {} --mask
-lista.mask_f = {}
+list.mask = {} --mask
+list.mask_f = {}
 ------------------------------------------
-lista.boots = {} --boots
-lista.boots_f = {}
+list.boots = {} --boots
+list.boots_f = {}
 -----------------------------------------
-lista.coat = {} --coats
-lista.coat_f = {}
+list.coat = {} --coats
+list.coat_f = {}
 ---------------------------------------
-lista.rekawiczki = {}
-lista.rekawiczki_f = {}
+list.gloves = {}
+list.gloves_f = {}
 -------------------------------------
-lista.bandana = {}
-lista.bandana_f = {}
+list.bandana = {}
+list.bandana_f = {}
 --------------------------------
-lista.gunbelts = {}
-lista.gunbelts_f = {}
+list.gunbelts = {}
+list.gunbelts_f = {}
 -------------------------------
-lista.belts = {}
-lista.belts_f = {}
+list.belts = {}
+list.belts_f = {}
 ---------------------------------
-lista.beltbuckle ={}
-lista.beltbuckle_f = {}
+list.beltbuckle ={}
+list.beltbuckle_f = {}
 ----------------------------------
-lista.offhand ={}
-lista.offhand_f ={}
+list.offhand ={}
+list.offhand_f ={}
 -------------------------
-lista.neckties = {}
-lista.neckties_f = {}
+list.neckties = {}
+list.neckties_f = {}
 ------------------------------
-lista.suspenders ={}
-lista.suspenders_f ={}
+list.suspenders ={}
+list.suspenders_f ={}
 -------------------------
-lista.spurs = {}
-lista.spurs_f = {}
+list.spurs = {}
+list.spurs_f = {}
 -------------------------
-lista.poncho = {}
-lista.poncho_f = {}
+list.poncho = {}
+list.poncho_f = {}
 -------------------------
-lista.eyewear = {}
-lista.eyewear_f = {}
+list.eyewear = {}
+list.eyewear_f = {}
 -------------------------
-lista.skirt = {} --skirt
+list.skirt = {} --skirt
 
 
 
@@ -74,7 +74,7 @@ local torso2 = nil
 local adding2 = true
 local adding = true
 
-local glowna = lista_kapelusze
+local main = list_hate
 local sex_global = 1
 
 local cam = nil
@@ -88,7 +88,7 @@ ComponentNumber.pants = 1
 ComponentNumber.skirt = 1
 ComponentNumber.mask = 1
 ComponentNumber.boots = 1
-ComponentNumber.rekawiczki = 1
+ComponentNumber.gloves = 1
 ComponentNumber.bandana = 1
 ComponentNumber.gunbelts = 1
 ComponentNumber.belts = 1
@@ -100,7 +100,7 @@ ComponentNumber.spurs = 1
 ComponentNumber.poncho = 1
 ComponentNumber.eyewear = 1
 --------------------------------------------
-local clothes_types = {"mask","hat","shirt","vest", "pants", "boots","rekawiczki","bandana","gunbelts", "belts","beltbuckle", "offhand","neckties","suspenders", "spurs","coat","poncho","eyewear","skirt"}
+local clothes_types = {"mask","hat","shirt","vest", "pants", "boots","gloves","bandana","gunbelts", "belts","beltbuckle", "offhand","neckties","suspenders", "spurs","coat","poncho","eyewear","skirt"}
 local isSkinCreatorOpened = false
 
 
@@ -111,25 +111,25 @@ function ShowSkinCreator(enable , sex)
     SendNUIMessage({
         openSkinCreator = enable,
         sex = sex1,
-        kapelusz = ComponentNumber.hat,
-        koszula = ComponentNumber.shirt,
-        kamizelka = ComponentNumber.vest,
-        plaszcz = ComponentNumber.coat,
-        spodnie = ComponentNumber.pants,
-        maska = ComponentNumber.mask,
-        buty = ComponentNumber.boots,
-        rekawiczki = ComponentNumber.rekawiczki,
+        hat = ComponentNumber.hat,
+        shirt = ComponentNumber.shirt,
+        vest = ComponentNumber.vest,
+        coat = ComponentNumber.coat,
+        pants = ComponentNumber.pants,
+        mask = ComponentNumber.mask,
+        shoes = ComponentNumber.boots,
+        gloves = ComponentNumber.gloves,
         bandana = ComponentNumber.bandana,
-        spodnica = ComponentNumber.skirt,
-        paskinabron = ComponentNumber.gunbelts,
-        paski = ComponentNumber.belts,
-        klamry = ComponentNumber.beltbuckle,
-        kabury = ComponentNumber.offhand,
-        krawat = ComponentNumber.neckties,
-        szelki = ComponentNumber.suspenders,
-        ostrogi = ComponentNumber.spurs,
+        dress = ComponentNumber.skirt,
+        gunbelt = ComponentNumber.gunbelts,
+        belt = ComponentNumber.belts,
+        buckle = ComponentNumber.beltbuckle,
+        holster = ComponentNumber.offhand,
+        tie = ComponentNumber.neckties,
+        supsenders = ComponentNumber.suspenders,
+        spurs = ComponentNumber.spurs,
         poncho = ComponentNumber.poncho,
-        okulary = ComponentNumber.eyewear,
+        glasses = ComponentNumber.eyewear,
     })
     SetNuiFocus(enable, enable)
 end
@@ -138,48 +138,47 @@ end
 Citizen.CreateThread(function()
     while adding do
         Citizen.Wait(0)
-        --print("Dzieje sie")
         for i, v in ipairs(MaleComp) do
             if v.category == "hats" then
-                table.insert(lista.hat, v.Hash)
+                table.insert(list.hat, v.Hash)
             elseif v.category == "shirts" then
-                table.insert(lista.shirt, v.Hash)
+                table.insert(list.shirt, v.Hash)
             elseif v.category == "vests" then
-                table.insert(lista.vest, v.Hash)
+                table.insert(list.vest, v.Hash)
             elseif v.category == "pants" then
-                table.insert(lista.pants, v.Hash)
+                table.insert(list.pants, v.Hash)
             elseif v.category == "masks" then
-                table.insert(lista.mask, v.Hash)
+                table.insert(list.mask, v.Hash)
             elseif v.category == "coats" then
-                table.insert(lista.coat, v.Hash)
+                table.insert(list.coat, v.Hash)
             elseif v.category == "boots" then
-                table.insert(lista.boots, v.Hash)
+                table.insert(list.boots, v.Hash)
             elseif v.category == "torsos" then
                 table.insert(maletorsos, v.Hash)
             elseif v.category == "legs" then
                 table.insert(malelegs, v.Hash)
             elseif v.category == "gloves" then
-                table.insert(lista.rekawiczki, v.Hash)
+                table.insert(list.gloves, v.Hash)
             elseif v.category == "neckwear" then
-                table.insert(lista.bandana, v.Hash)
+                table.insert(list.bandana, v.Hash)
             elseif v.category == "gunbelts" then
-                table.insert(lista.gunbelts, v.Hash)
+                table.insert(list.gunbelts, v.Hash)
             elseif v.category == "belts" then
-                table.insert(lista.belts, v.Hash)
+                table.insert(list.belts, v.Hash)
             elseif v.category == "beltbuckle" then
-                table.insert(lista.beltbuckle, v.Hash)
+                table.insert(list.beltbuckle, v.Hash)
             elseif v.category == "offhand" then
-                table.insert(lista.offhand, v.Hash)
+                table.insert(list.offhand, v.Hash)
             elseif v.category == "neckties" then
-                table.insert(lista.neckties, v.Hash)
+                table.insert(list.neckties, v.Hash)
             elseif v.category == "suspenders" then
-                table.insert(lista.suspenders, v.Hash)
+                table.insert(list.suspenders, v.Hash)
             elseif v.category == "spurs" then
-                table.insert(lista.spurs, v.Hash)
+                table.insert(list.spurs, v.Hash)
             elseif v.category == "ponchos" then
-                table.insert(lista.poncho, v.Hash)
+                table.insert(list.poncho, v.Hash)
             elseif v.category == "eyewear" then
-                table.insert(lista.eyewear, v.Hash)
+                table.insert(list.eyewear, v.Hash)
             end
         end
         adding = false
@@ -191,50 +190,49 @@ end)
 Citizen.CreateThread(function()
     while adding2 do
         Citizen.Wait(0)
-        --print("Dzieje sie 2")
         for i, v in ipairs(FemaleComp) do
             if v.category == "hats" then
-                table.insert(lista.hat_f, v.Hash)
+                table.insert(list.hat_f, v.Hash)
             elseif v.category == "shirts" then
-                table.insert(lista.shirt_f, v.Hash)
+                table.insert(list.shirt_f, v.Hash)
             elseif v.category == "vests" then
-                table.insert(lista.vest_f, v.Hash)
+                table.insert(list.vest_f, v.Hash)
             elseif v.category == "pants" then
-                table.insert(lista.pants_f, v.Hash)
+                table.insert(list.pants_f, v.Hash)
             elseif v.category == "boots" then
-                table.insert(lista.boots_f, v.Hash)
+                table.insert(list.boots_f, v.Hash)
             elseif v.category == "masks" then
-                table.insert(lista.mask_f, v.Hash)
+                table.insert(list.mask_f, v.Hash)
             elseif v.category == "coats" then
-                table.insert(lista.coat_f, v.Hash)
+                table.insert(list.coat_f, v.Hash)
             elseif v.category == "skirts" then
-                table.insert(lista.skirt, v.Hash)
+                table.insert(list.skirt, v.Hash)
             elseif v.category == "torsos" then
                 table.insert(femaletorsos, v.Hash)
             elseif v.category == "legs" then
                 table.insert(femalelegs, v.Hash)
             elseif v.category == "gloves" then
-                table.insert(lista.rekawiczki_f, v.Hash)
+                table.insert(list.gloves_f, v.Hash)
             elseif v.category == "neckwear" then
-                table.insert(lista.bandana_f, v.Hash)
+                table.insert(list.bandana_f, v.Hash)
             elseif v.category == "belts" then
-                table.insert(lista.belts_f, v.Hash)
+                table.insert(list.belts_f, v.Hash)
             elseif v.category == "gunbelts" then
-                table.insert(lista.gunbelts_f, v.Hash)
+                table.insert(list.gunbelts_f, v.Hash)
             elseif v.category == "beltbuckle" then
-                table.insert(lista.beltbuckle_f, v.Hash)
+                table.insert(list.beltbuckle_f, v.Hash)
             elseif v.category == "offhand" then
-                table.insert(lista.offhand_f, v.Hash)
+                table.insert(list.offhand_f, v.Hash)
             elseif v.category == "neckties" then
-                table.insert(lista.neckties_f, v.Hash)
+                table.insert(list.neckties_f, v.Hash)
             elseif v.category == "suspenders" then
-                table.insert(lista.suspenders_f, v.Hash)
+                table.insert(list.suspenders_f, v.Hash)
             elseif v.category == "spurs" then
-                table.insert(lista.spurs_f, v.Hash)
+                table.insert(list.spurs_f, v.Hash)
             elseif v.category == "ponchos" then
-                table.insert(lista.poncho_f, v.Hash)
+                table.insert(list.poncho_f, v.Hash)
             elseif v.category == "eyewear" then
-                table.insert(lista.eyewear_f, v.Hash)
+                table.insert(list.eyewear_f, v.Hash)
             else end
         end
         adding2 = false
@@ -243,9 +241,9 @@ end)
 
 
 RegisterNetEvent('redemrp_clothing:sex')
-AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
+AddEventHandler('redemrp_clothing:sex', function(skin, clothing)
     local _skin = json.decode(skin)
-    local _ubranie = json.decode(ubranie)
+    local _clothing = json.decode(clothing)
     local sex = 1
     if tonumber(_skin.sex) == 1 then
         sex = 1
@@ -270,25 +268,25 @@ AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
             legs = '0x' .. malelegs[30]
         else end
 
-        ComponentNumber.hat =  tonumber( _ubranie.hat)
-        ComponentNumber.shirt =  tonumber( _ubranie.shirt)
-        ComponentNumber.vest =  tonumber( _ubranie.vest)
-        ComponentNumber.coat =  tonumber( _ubranie.coat)
-        ComponentNumber.pants =  tonumber( _ubranie.pants)
-        ComponentNumber.skirt =  tonumber( _ubranie.skirt)
-        ComponentNumber.mask =  tonumber( _ubranie.mask)
-        ComponentNumber.boots =  tonumber( _ubranie.boots)
-        ComponentNumber.rekawiczki =  tonumber( _ubranie.rekawiczki)
-        ComponentNumber.bandana =  tonumber( _ubranie.bandana)
-        ComponentNumber.gunbelts =  tonumber( _ubranie.gunbelts)
-        ComponentNumber.belts =  tonumber( _ubranie.belts)
-        ComponentNumber.beltbuckle =  tonumber( _ubranie.beltbuckle)
-        ComponentNumber.offhand =  tonumber( _ubranie.offhand)
-        ComponentNumber.neckties =  tonumber( _ubranie.neckties)
-        ComponentNumber.suspenders =  tonumber( _ubranie.suspenders)
-        ComponentNumber.spurs =  tonumber( _ubranie.spurs)
-        ComponentNumber.poncho =  tonumber( _ubranie.poncho)
-        ComponentNumber.eyewear =  tonumber( _ubranie.eyewear)
+        ComponentNumber.hat =  tonumber( _clothing.hat)
+        ComponentNumber.shirt =  tonumber( _clothing.shirt)
+        ComponentNumber.vest =  tonumber( _clothing.vest)
+        ComponentNumber.coat =  tonumber( _clothing.coat)
+        ComponentNumber.pants =  tonumber( _clothing.pants)
+        ComponentNumber.skirt =  tonumber( _clothing.skirt)
+        ComponentNumber.mask =  tonumber( _clothing.mask)
+        ComponentNumber.boots =  tonumber( _clothing.boots)
+        ComponentNumber.gloves =  tonumber( _clothing.gloves)
+        ComponentNumber.bandana =  tonumber( _clothing.bandana)
+        ComponentNumber.gunbelts =  tonumber( _clothing.gunbelts)
+        ComponentNumber.belts =  tonumber( _clothing.belts)
+        ComponentNumber.beltbuckle =  tonumber( _clothing.beltbuckle)
+        ComponentNumber.offhand =  tonumber( _clothing.offhand)
+        ComponentNumber.neckties =  tonumber( _clothing.neckties)
+        ComponentNumber.suspenders =  tonumber( _clothing.suspenders)
+        ComponentNumber.spurs =  tonumber( _clothing.spurs)
+        ComponentNumber.poncho =  tonumber( _clothing.poncho)
+        ComponentNumber.eyewear =  tonumber( _clothing.eyewear)
 
     else
         sex = 2
@@ -312,25 +310,25 @@ AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
             torso2 = '0x' .. femaletorsos[30]
             legs2 = '0x' .. femalelegs[30]
         else end
-        ComponentNumber.hat =  tonumber( _ubranie.hat)
-        ComponentNumber.shirt =  tonumber( _ubranie.shirt)
-        ComponentNumber.vest =  tonumber( _ubranie.vest)
-        ComponentNumber.coat =  tonumber( _ubranie.coat)
-        ComponentNumber.pants =  tonumber( _ubranie.pants)
-        ComponentNumber.skirt =  tonumber( _ubranie.skirt)
-        ComponentNumber.mask =  tonumber( _ubranie.mask)
-        ComponentNumber.boots =  tonumber( _ubranie.boots)
-        ComponentNumber.rekawiczki =  tonumber( _ubranie.rekawiczki)
-        ComponentNumber.bandana =  tonumber( _ubranie.bandana)
-        ComponentNumber.gunbelts =  tonumber( _ubranie.gunbelts)
-        ComponentNumber.belts =  tonumber( _ubranie.belts)
-        ComponentNumber.beltbuckle =  tonumber( _ubranie.beltbuckle)
-        ComponentNumber.offhand =  tonumber( _ubranie.offhand)
-        ComponentNumber.neckties =  tonumber( _ubranie.neckties)
-        ComponentNumber.suspenders =  tonumber( _ubranie.suspenders)
-        ComponentNumber.spurs =  tonumber( _ubranie.spurs)
-        ComponentNumber.poncho =  tonumber( _ubranie.poncho)
-        ComponentNumber.eyewear =  tonumber( _ubranie.eyewear)
+        ComponentNumber.hat =  tonumber( _clothing.hat)
+        ComponentNumber.shirt =  tonumber( _clothing.shirt)
+        ComponentNumber.vest =  tonumber( _clothing.vest)
+        ComponentNumber.coat =  tonumber( _clothing.coat)
+        ComponentNumber.pants =  tonumber( _clothing.pants)
+        ComponentNumber.skirt =  tonumber( _clothing.skirt)
+        ComponentNumber.mask =  tonumber( _clothing.mask)
+        ComponentNumber.boots =  tonumber( _clothing.boots)
+        ComponentNumber.gloves =  tonumber( _clothing.gloves)
+        ComponentNumber.bandana =  tonumber( _clothing.bandana)
+        ComponentNumber.gunbelts =  tonumber( _clothing.gunbelts)
+        ComponentNumber.belts =  tonumber( _clothing.belts)
+        ComponentNumber.beltbuckle =  tonumber( _clothing.beltbuckle)
+        ComponentNumber.offhand =  tonumber( _clothing.offhand)
+        ComponentNumber.neckties =  tonumber( _clothing.neckties)
+        ComponentNumber.suspenders =  tonumber( _clothing.suspenders)
+        ComponentNumber.spurs =  tonumber( _clothing.spurs)
+        ComponentNumber.poncho =  tonumber( _clothing.poncho)
+        ComponentNumber.eyewear =  tonumber( _clothing.eyewear)
     end
     ShowSkinCreator(true, sex)
     isSkinCreatorOpened = true
@@ -338,7 +336,7 @@ AddEventHandler('redemrp_clothing:sex', function(skin, ubranie)
 end)
 
 
-RegisterCommand("loadcloath", function(source, args)
+RegisterCommand("loadclothing", function(source, args)
     TriggerServerEvent("redemrp_clothing:loadClothes", 1, function(cb)
         end)
 end)
@@ -398,9 +396,9 @@ AddEventHandler('redemrp_clothing:updateClothes', function(data)
         for v,k in pairs(clothes_types) do
             if ComponentNumber[k] ~=  tonumber(data[k]) and data[k] ~= nil then
                 if sex_global == 1 then
-                    glowna = lista[k]
+                    main = list[k]
                 else
-                    glowna = lista[k.."_f"]
+                    main = list[k.."_f"]
                 end
                 ComponentNumber[k] = tonumber(data[k])
                 if k == "coat" then
@@ -409,7 +407,7 @@ AddEventHandler('redemrp_clothing:updateClothes', function(data)
                     Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xE06D30CE, 0) -- Set target category, here the hash is for hats
                     Citizen.InvokeNative(0xCC8CA3E88256E58F, PlayerPedId(), 0, 1, 1, 1, 0)
                 end
-                zmiana(data[k])
+                change(data[k])
                 if k == "hat" then
                     camera(0.9,0.6)
                 elseif k == "poncho" then
@@ -438,7 +436,7 @@ AddEventHandler('redemrp_clothing:updateClothes', function(data)
                     camera(0.9,0.6)
                 elseif k == "boots" then
                     camera(1.6,-0.6)
-                elseif k == "rekawiczki" then
+                elseif k == "gloves" then
                     camera(1.6,-0.2)
                 elseif k == "bandana" then
                     camera(0.9,0.6)
@@ -454,95 +452,95 @@ end)
 
 
 
-function zmiana(wartosc)
-    local wartosc2 = tonumber(wartosc)
-    local hash = ("0x" .. glowna[wartosc2])
+function change(value)
+    local value2 = tonumber(value)
+    local hash = ("0x" .. main[value2])
 
-    if glowna == lista["shirt_f"]  then
+    if main == list["shirt_f"]  then
         Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(torso2),false,true,true)
     end
-    if glowna == lista["pants_f"] and wartosc2 <= 1  then
+    if main == list["pants_f"] and value2 <= 1  then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x1D4C528A, 0) -- Set target category, here the hash is for hats
         Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(legs2),false,true,true)
 
 
-    elseif glowna == lista["pants"] and wartosc2 <= 1 then
+    elseif main == list["pants"] and value2 <= 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x1D4C528A, 0) -- Set target category, here the hash is for hats
         Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(legs),false,true,true)
 
 
-    elseif glowna == lista["shirt"] and wartosc2 <= 1  then
+    elseif main == list["shirt"] and value2 <= 1  then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x2026C46D, 0) -- Set target category, here the hash is for hats
         Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(torso),false,true,true)
 
 
-    elseif glowna == lista["shirt_f"] and wartosc2 <= 1 then
+    elseif main == list["shirt_f"] and value2 <= 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x2026C46D, 0) -- Set target category, here the hash is for hats
         Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(),tonumber(torso2),false,true,true)
 
 
-    elseif (glowna == lista["mask_f"] or glowna == lista["mask"]) and wartosc2 == 1 then
+    elseif (main == list["mask_f"] or main == list["mask"]) and value2 == 1 then
 
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x7505EF42, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["rekawiczki"] or glowna == lista["rekawiczki_f"]) and wartosc2 == 1 then
+    elseif (main == list["gloves"] or main == list["gloves_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xEABE0032, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["bandana"] or glowna == lista["bandana_f"]) and wartosc2 == 1 then
+    elseif (main == list["bandana"] or main == list["bandana_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x5FC29285, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["hat"] or glowna == lista["hat_f"]) and wartosc2 == 1 then
+    elseif (main == list["hat"] or main == list["hat_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x9925C067, 0) -- Set target category, here the hash is for hats
 
 
-    elseif glowna == lista["skirt"] and wartosc2 == 1 then
+    elseif main == list["skirt"] and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xA0E3AB7F, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["coat"] or glowna == lista["coat_f"]) and wartosc2 == 1 then
+    elseif (main == list["coat"] or main == list["coat_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x662AC34, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["vest_f"] or glowna == lista["vest"]) and wartosc2 == 1 then
+    elseif (main == list["vest_f"] or main == list["vest"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x485EE834, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["gunbelts"] or glowna == lista["gunbelts_f"]) and wartosc2 == 1 then
+    elseif (main == list["gunbelts"] or main == list["gunbelts_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x9B2C8B89, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["belts"] or glowna == lista["belts_f"]) and wartosc2 == 1 then
+    elseif (main == list["belts"] or main == list["belts_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xA6D134C6, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["beltbuckle"] or glowna == lista["beltbuckle_f"]) and wartosc2 == 1 then
+    elseif (main == list["beltbuckle"] or main == list["beltbuckle_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xFAE9107F, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["offhand"] or glowna == lista["offhand_f"]) and wartosc2 == 1 then
+    elseif (main == list["offhand"] or main == list["offhand_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xB6B6122D, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["neckties"] or glowna == lista["neckties_f"]) and wartosc2 == 1 then
+    elseif (main == list["neckties"] or main == list["neckties_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x7A96FACA, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["suspenders"] or glowna == lista["suspenders_f"]) and wartosc2 == 1 then
+    elseif (main == list["suspenders"] or main == list["suspenders_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x877A2CF7, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["spurs"] or glowna == lista["spurs_f"]) and wartosc2 == 1 then
+    elseif (main == list["spurs"] or main == list["spurs_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x18729F39, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["poncho"] or glowna == lista["poncho_f"]) and wartosc2 == 1 then
+    elseif (main == list["poncho"] or main == list["poncho_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xAF14310B, 0) -- Set target category, here the hash is for hats
 
 
-    elseif (glowna == lista["eyewear"] or glowna == lista["eyewear_f"]) and wartosc2 == 1 then
+    elseif (main == list["eyewear"] or main == list["eyewear_f"]) and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x5E47CA6, 0) -- Set target category, here the hash is for hats
 
 
@@ -561,34 +559,34 @@ end
 
 
 RegisterNetEvent('redemrp_clothing:load')
-AddEventHandler('redemrp_clothing:load', function(skin, ubranie , target)
+AddEventHandler('redemrp_clothing:load', function(skin, clothing , target)
     Citizen.CreateThread(function()
         local _target
         local test = false
         local _skin
-        local _ubranie
+        local _clothing
         local _t = target
         if _t ~= nil then
             _target = _t
             _skin = skin
-            _ubranie = ubranie
+            _clothing = clothing
         else
             _target = PlayerPedId()
             _skin = json.decode(skin)
-            _ubranie = json.decode(ubranie)
+            _clothing = json.decode(clothing)
         end
         SetEntityAlpha(_target, 0)
         while test == false do
             for v,k in pairs(clothes_types) do
 				Wait(1)
                 if tonumber(_skin.sex) == 1 then
-                    glowna = lista[k]
+                    main = list[k]
                 else
-                    glowna = lista[k.."_f"]
+                    main = list[k.."_f"]
                 end
-                local wartosc = tonumber(_ubranie[k])
-                if wartosc > 1 then
-                    local hash = ("0x" .. glowna[wartosc])
+                local value = tonumber(_clothing[k])
+                if value > 1 then
+                    local hash = ("0x" .. main[value])
                     Citizen.InvokeNative(0xD3A7B003ED343FD9 , _target, tonumber(hash), false, true, true)
                 end
             end
@@ -720,7 +718,7 @@ function Outfits()
 
     if Outfits_tab ~= nil then
         for j, z in pairs(Outfits_tab) do
-            table.insert (elements_outfits , {label = Outfits_tab[j].name, value = Outfits_tab[j].name , desc =  "Wybierz strój" })
+            table.insert (elements_outfits , {label = Outfits_tab[j].name, value = Outfits_tab[j].name , desc =  "Change Outfit" })
         end
     end
 
@@ -760,7 +758,7 @@ function Outfits()
 end
 local elements_outfits_manage = {
     {label = "Ustaw", value = "SetOutfits" , desc =  "Dress your outfit" },
-    {label = "Usuń", value = "DeleteOutfit" , desc =  "Take off your outfit" },
+    {label = "Usuń", value = "DeleteOutfit" , desc =  "Delete your outfit" },
 
 
 
