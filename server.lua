@@ -1,8 +1,8 @@
 RegisterServerEvent('redemrp_clothing:Save')
-AddEventHandler('redemrp_clothing:Save', function(ubrania, saveOutfit , name, cb)
-    local _ubrania = ubrania
+AddEventHandler('redemrp_clothing:Save', function(clothing, saveOutfit , name, cb)
+    local _clothing = clothing
     local _name = name
-    local decode = json.decode(ubrania)
+    local decode = json.decode(clothing)
     TriggerEvent('redemrp:getPlayerFromId', source, function(user)
         local identifier = user.getIdentifier()
         local charid = user.getSessionVar("charid")
@@ -12,15 +12,15 @@ AddEventHandler('redemrp_clothing:Save', function(ubrania, saveOutfit , name, cb
 
                 if call then
 
-                    MySQL.Async.execute("UPDATE clothes SET `clothes`='" .. _ubrania .. "' WHERE `identifier`=@identifier AND `charid`=@charid", {identifier = identifier, charid = charid}, function(done)
+                    MySQL.Async.execute("UPDATE clothes SET `clothes`='" .. _clothing .. "' WHERE `identifier`=@identifier AND `charid`=@charid", {identifier = identifier, charid = charid}, function(done)
                         end)
                 else
 
-                    MySQL.Async.execute('INSERT INTO clothes (`identifier`, `charid`, `clothes`) VALUES (@identifier, @charid, @ubrania);',
+                    MySQL.Async.execute('INSERT INTO clothes (`identifier`, `charid`, `clothes`) VALUES (@identifier, @charid, @clothing);',
                         {
                             identifier = identifier,
                             charid = charid,
-                            ubrania = _ubrania
+                            clothing = _clothing
                         }, function(rowsChanged)
                         end)
                 end
@@ -30,15 +30,15 @@ AddEventHandler('redemrp_clothing:Save', function(ubrania, saveOutfit , name, cb
 
                     if call then
 
-                        MySQL.Async.execute("UPDATE outfits SET `clothes`='" .. _ubrania .. "' WHERE `identifier`=@identifier AND `charid`=@charid AND `name`=@name", {identifier = identifier, charid = charid , name = name}, function(done)
+                        MySQL.Async.execute("UPDATE outfits SET `clothes`='" .. _clothing .. "' WHERE `identifier`=@identifier AND `charid`=@charid AND `name`=@name", {identifier = identifier, charid = charid , name = name}, function(done)
                             end)
                     else
 
-                        MySQL.Async.execute('INSERT INTO outfits (`identifier`, `charid`, `clothes`, `name`) VALUES (@identifier, @charid, @ubrania , @name);',
+                        MySQL.Async.execute('INSERT INTO outfits (`identifier`, `charid`, `clothes`, `name`) VALUES (@identifier, @charid, @clothing , @name);',
                             {
                                 identifier = identifier,
                                 charid = charid,
-                                ubrania = _ubrania,
+                                clothing = _clothing,
                                 name = _name
                             }, function(rowsChanged)
                             end)
@@ -57,8 +57,8 @@ AddEventHandler('redemrp_clothing:loadClothes', function(value)
     local _value = value
     local _source = source
     local skin = nil
-    local ubrania = nil
-    local ubranie2 = 0
+    local clothing = nil
+    local clothing2 = 0
     TriggerEvent('redemrp:getPlayerFromId', source, function(user)
         local identifier = user.getIdentifier()
         local charid = user.getSessionVar("charid")
@@ -70,9 +70,9 @@ AddEventHandler('redemrp_clothing:loadClothes', function(value)
                 skin = nil
             end
 
-            MySQL.Async.fetchAll('SELECT * FROM clothes WHERE `identifier`=@identifier AND `charid`=@charid;', {identifier = identifier, charid = charid}, function(ubrania)
-                if ubrania[1] then
-                    ubrania = ubrania[1].clothes
+            MySQL.Async.fetchAll('SELECT * FROM clothes WHERE `identifier`=@identifier AND `charid`=@charid;', {identifier = identifier, charid = charid}, function(clothing)
+                if clothing[1] then
+                    clothing = clothing[1].clothes
                 else
                     local elementy = {
                         ["hat"] = 1,
@@ -83,7 +83,7 @@ AddEventHandler('redemrp_clothing:loadClothes', function(value)
                         ["boots"] =1,
                         ["skirt"] = 1,
                         ["coat"] = 1,
-                        ["rekawiczki"] = 1,
+                        ["gloves"] = 1,
                         ["bandana"] = 1,
                         ["gunbelts"] =1,
                         ["belts"] = 1,
@@ -99,15 +99,15 @@ AddEventHandler('redemrp_clothing:loadClothes', function(value)
 
                     }
                     local json = json.encode(elementy)
-                    ubrania = json
+                    clothing = json
                 end
-                if ubrania ~= nil and skin ~= nil then
+                if clothing ~= nil and skin ~= nil then
                     if _value == 1 then
-                        TriggerClientEvent("redemrp_clothing:load", _source, skin, ubrania)
+                        TriggerClientEvent("redemrp_clothing:load", _source, skin, clothing)
                     elseif _value == 2 then
-                        TriggerClientEvent("redemrp_clothing:sex", _source, skin, ubrania)
+                        TriggerClientEvent("redemrp_clothing:sex", _source, skin, clothing)
                     elseif _value == 3 then
-                        TriggerClientEvent("redemrp_clothes_remove:start", _source, skin, ubrania)
+                        TriggerClientEvent("redemrp_clothes_remove:start", _source, skin, clothing)
 
                     end
                 else
@@ -174,9 +174,9 @@ end)
 
 AddEventHandler('redemrp_clothing:retrieveClothes', function(identifier, charid, callback)
     local Callback = callback
-    MySQL.Async.fetchAll('SELECT * FROM clothes WHERE `identifier`=@identifier AND `charid`=@charid;', {identifier = identifier, charid = charid}, function(ubrania)
-        if ubrania[1] then
-            Callback(ubrania[1])
+    MySQL.Async.fetchAll('SELECT * FROM clothes WHERE `identifier`=@identifier AND `charid`=@charid;', {identifier = identifier, charid = charid}, function(clothing)
+        if clothing[1] then
+            Callback(clothing[1])
         else
             Callback(false)
         end
@@ -185,9 +185,9 @@ end)
 
 AddEventHandler('redemrp_clothing:retrieveOutfits', function(identifier, charid, name, callback)
     local Callback = callback
-    MySQL.Async.fetchAll('SELECT * FROM outfits WHERE `identifier`=@identifier AND `charid`=@charid AND `name`=@name;', {identifier = identifier, charid = charid, name = name}, function(ubrania)
-        if ubrania[1] then
-            Callback(ubrania[1]["clothes"])
+    MySQL.Async.fetchAll('SELECT * FROM outfits WHERE `identifier`=@identifier AND `charid`=@charid AND `name`=@name;', {identifier = identifier, charid = charid, name = name}, function(clothing)
+        if clothing[1] then
+            Callback(clothing[1]["clothes"])
         else
             Callback(false)
         end
