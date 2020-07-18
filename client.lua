@@ -53,7 +53,7 @@ list.poncho_f = {}
 list.eyewear = {}
 list.eyewear_f = {}
 -------------------------
-list.skirt = {} --skirt
+list.skirt_f = {} --skirt
 
 
 
@@ -206,7 +206,7 @@ Citizen.CreateThread(function()
             elseif v.category == "coats" then
                 table.insert(list.coat_f, v.Hash)
             elseif v.category == "skirts" then
-                table.insert(list.skirt, v.Hash)
+                table.insert(list.skirt_f, v.Hash)
             elseif v.category == "torsos" then
                 table.insert(femaletorsos, v.Hash)
             elseif v.category == "legs" then
@@ -496,7 +496,7 @@ function change(value)
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0x9925C067, 0) -- Set target category, here the hash is for hats
 
 
-    elseif main == list["skirt"] and value2 == 1 then
+    elseif main == list["skirt_f"] and value2 == 1 then
         Citizen.InvokeNative(0xD710A5007C2AC539, PlayerPedId(), 0xA0E3AB7F, 0) -- Set target category, here the hash is for hats
 
 
