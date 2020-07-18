@@ -574,7 +574,8 @@ AddEventHandler('redemrp_clothing:load', function(skin, clothing , target)
             _target = PlayerPedId()
             _skin = json.decode(skin)
             _clothing = json.decode(clothing)
-        end
+        end 
+        if _clothing ~= nil then
         SetEntityAlpha(_target, 0)
         while test == false do
             for v,k in pairs(clothes_types) do
@@ -597,7 +598,7 @@ AddEventHandler('redemrp_clothing:load', function(skin, clothing , target)
             Wait(500)
             test = Citizen.InvokeNative(0xA0BC8FAED8CFEB3C, _target)			
         end
-		
+	end	
         SetEntityAlpha(_target, 255)
         if _t ~= nil then
             TriggerEvent('redemrp_identity:removeLoadingScreen')
