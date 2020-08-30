@@ -586,9 +586,13 @@ AddEventHandler('redemrp_clothing:load', function(skin, clothing , target)
                     main = list[k.."_f"]
                 end
                 local value = tonumber(_clothing[k])
-                if value > 1 then
-                    local hash = ("0x" .. main[value])
-                    Citizen.InvokeNative(0xD3A7B003ED343FD9 , _target, tonumber(hash), false, true, true)
+                if value ~= nil then
+                  if value > 1 then
+                      local hash = ("0x" .. main[value])
+                      Citizen.InvokeNative(0xD3A7B003ED343FD9 , _target, tonumber(hash), false, true, true)
+                  end
+                else
+                  print("Report this print "..k)
                 end
             end
 			Wait(500)
