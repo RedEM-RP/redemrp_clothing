@@ -577,6 +577,10 @@ AddEventHandler('redemrp_clothing:load', function(skin, clothing , target)
         end 
         if _clothing ~= nil then
         SetEntityAlpha(_target, 0)
+	Citizen.InvokeNative(0xD710A5007C2AC539, _target, 0x1D4C528A, 0)
+	Citizen.InvokeNative(0x704C908E9C405136, _target)
+	Citizen.InvokeNative(0xAAB86462966168CE, _target, 1)
+	Citizen.InvokeNative(0xCC8CA3E88256E58F, _target, 0, 1, 1, 1, 0) 
         while test == false do
             for v,k in pairs(clothes_types) do
 				Wait(1)
