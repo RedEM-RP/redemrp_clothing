@@ -3305,6 +3305,31 @@ FemaleComp = {
 	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_008", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "FE82A25A", hash_dec_signed=-24993190,category_hash_dec_signed=1214179380},
 	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_009", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "53E04D2C", hash_dec_signed=1407208748,category_hash_dec_signed=1214179380},
 	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_010", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "F5AD0FA7", hash_dec_signed=-173207641,category_hash_dec_signed=1214179380},
+	
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_001", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "425632FE", hash_dec_signed=1112945406,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_002", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "FBDF2615", hash_dec_signed=-69261803,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_003", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "25AF79B5", hash_dec_signed=632256949,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_004", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "4F524CFA", hash_dec_signed=1330793722,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_005", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "594960E8", hash_dec_signed=1497981160,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_006", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "32FC944F", hash_dec_signed=855413839,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_007", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "44AD37B0", hash_dec_signed=1152202672,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_008", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "A655FB00", hash_dec_signed=-1504314624,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_009", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "B8259EA3", hash_dec_signed=-1205494109,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_201_tint_010", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "06FB466D", hash_dec_signed=117130861,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_001", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "C05AE2AF", hash_dec_signed=-1067785553,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_002", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "0B7678E5", hash_dec_signed=192313573,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_003", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "FD3EDC76", hash_dec_signed=-46211978,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_004", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "25B0AD61", hash_dec_signed=632335713,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_005", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "176E90DD", hash_dec_signed=393122013,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_006", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "425D66BA", hash_dec_signed=1113417402,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_007", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "34104A20", hash_dec_signed=873482784,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_008", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "21462484", hash_dec_signed=558244996,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_009", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "12C1877B", hash_dec_signed=314673019,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_F_vest_202_tint_010", ["category"] = "vests", ped_type="female",is_multiplayer=true,category_hash=0x485EE834, ["Hash"] = "4DCF7C82", hash_dec_signed=1305443458,category_hash_dec_signed=1214179380},
+	
+	
+	
+	
 	{ ["name"] = "", ["category"] = "accessories", ped_type="female",is_multiplayer=true,category_hash=0x79D7DF96, ["Hash"] = "1002112A", hash_dec_signed=268570922,category_hash_dec_signed=2044190614},
 	{ ["name"] = "", ["category"] = "accessories", ped_type="female",is_multiplayer=true,category_hash=0x79D7DF96, ["Hash"] = "12CBC8FA", hash_dec_signed=315345146,category_hash_dec_signed=2044190614},
 	{ ["name"] = "", ["category"] = "accessories", ped_type="female",is_multiplayer=true,category_hash=0x79D7DF96, ["Hash"] = "13C83C66", hash_dec_signed=331889766,category_hash_dec_signed=2044190614},

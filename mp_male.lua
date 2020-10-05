@@ -3556,6 +3556,33 @@ MaleComp = {
 	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_008", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "8B03395", hash_dec_signed=145765269,category_hash_dec_signed=1214179380},
 	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_009", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "F70A904A", hash_dec_signed=-150302646,category_hash_dec_signed=1214179380},
 	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_010", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "263E7929", hash_dec_signed=641628457,category_hash_dec_signed=1214179380},
+	
+	--Duplicate
+	{ ["name"] = "CLOTHING_ITEM_M_vest_200_tint_009", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "35A5E857", hash_dec_signed=900065367,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_200_tint_010", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "BCA3F771", hash_dec_signed=-1130104975,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_001", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "B43F485E", hash_dec_signed=-1270921122,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_002", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "59A7932C", hash_dec_signed=1504154412,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_003", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "6B61369F", hash_dec_signed=1801533087,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_004", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "7D275A2B", hash_dec_signed=2099730987,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_005", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "8EE3FDA4", hash_dec_signed=-1897661020,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_006", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "10A20122", hash_dec_signed=279052578,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_007", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "2265A4A9", hash_dec_signed=577086633,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_008", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "343FC85D", hash_dec_signed=876595293,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_009", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "45FA6BD2", hash_dec_signed=1174039506,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_201_tint_010", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "CB47F557", hash_dec_signed=-884476585,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_001", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "AE7DFF46", hash_dec_signed=-1367474362,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_002", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "9CD85BFB", hash_dec_signed=-1663542277,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_003", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "1CEFDC14", hash_dec_signed=485481492,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_004", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "2F150076", hash_dec_signed=789905526,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_005", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "65526CF0", hash_dec_signed=1699900656,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_006", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "53A0C98D", hash_dec_signed=1403046285,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_007", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "D666CF03", hash_dec_signed=-697905405,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_008", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "8B03395", hash_dec_signed=145765269,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_009", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "F70A904A", hash_dec_signed=-150302646,category_hash_dec_signed=1214179380},
+	{ ["name"] = "CLOTHING_ITEM_M_vest_202_tint_010", ["category"] ="vests",ped_type="male",is_multiplayer=true,category_hash=0x485EE834,  ["Hash"] = "263E7929", hash_dec_signed=641628457,category_hash_dec_signed=1214179380},
+	--Duplicate
+	
+	
 	{ ["name"] = "", ["category"] ="accessories",ped_type="male",is_multiplayer=true,category_hash=0x79D7DF96,  ["Hash"] = "13F53A09", hash_dec_signed=334838281,category_hash_dec_signed=2044190614},
 	{ ["name"] = "", ["category"] ="accessories",ped_type="male",is_multiplayer=true,category_hash=0x79D7DF96,  ["Hash"] = "17920A1E", hash_dec_signed=395446814,category_hash_dec_signed=2044190614},
 	{ ["name"] = "", ["category"] ="accessories",ped_type="male",is_multiplayer=true,category_hash=0x79D7DF96,  ["Hash"] = "29A9AE4D", hash_dec_signed=698986061,category_hash_dec_signed=2044190614},
