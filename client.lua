@@ -575,15 +575,11 @@ AddEventHandler('redemrp_clothing:load', function(skin, clothing , target)
             _skin = json.decode(skin)
             _clothing = json.decode(clothing)
         end 
-        if _clothing ~= nil then
+        if _clothing ~= nil and _clothing.pants then
         SetEntityAlpha(_target, 0)
-	Citizen.InvokeNative(0xD710A5007C2AC539, _target, 0x1D4C528A, 0)
-	Citizen.InvokeNative(0x704C908E9C405136, _target)
-	Citizen.InvokeNative(0xAAB86462966168CE, _target, 1)
-	Citizen.InvokeNative(0xCC8CA3E88256E58F, _target, 0, 1, 1, 1, 0) 
         while test == false do
             for v,k in pairs(clothes_types) do
-				Wait(1)
+		Wait(2)
                 if tonumber(_skin.sex) == 1 then
                     main = list[k]
                 else
@@ -601,7 +597,6 @@ AddEventHandler('redemrp_clothing:load', function(skin, clothing , target)
             end
 			Wait(500)
             Citizen.InvokeNative(0x704C908E9C405136, _target)
-            Citizen.InvokeNative(0xAAB86462966168CE, _target, 1)
             Citizen.InvokeNative(0xCC8CA3E88256E58F, _target, 0, 1, 1, 1, 0)
             Wait(500)
             test = Citizen.InvokeNative(0xA0BC8FAED8CFEB3C, _target)			
