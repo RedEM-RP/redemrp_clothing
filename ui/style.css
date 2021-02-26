@@ -6,6 +6,7 @@ input[type=range] {
   background: transparent;
   /* Otherwise white in Chrome */
   vertical-align: middle;
+  
   padding: 0 10px; }
 
 input[type=range]::-webkit-slider-thumb {
@@ -26,9 +27,9 @@ input[type=range]::-ms-track {
 /* Special styling for WebKit/Blink */
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 12px;
-  width: 12px;
-  border-radius: 100%;
+  height: 18px;
+  width: 18px;
+  border-radius: 25%;
   background: #ffffff;
   cursor: pointer;
   margin-top: -6px;
@@ -48,36 +49,18 @@ input[type=text]{
     border-color:red;
     box-shadow:0 0 8px 0 red;
   }
-/* All the same stuff for Firefox */
-input[type=range]::-moz-range-thumb {
-  height: 12px;
-  width: 12px;
-  border-radius: 100%;
-  background: #ffffff;
-  cursor: pointer; }
 
 /* All the same stuff for IE */
-input[type=range]::-ms-thumb {
-  height: 12px;
-  width: 12px;
-  border-radius: 100%;
-  background: #ffffff;
-  cursor: pointer; }
 
 input[type=range]::-webkit-slider-runnable-track {
   width: 330px;
-  height: 2px;
+  height: 8px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.2); }
+  border-radius: 10%;
+  background: rgba(255, 255, 255, 0.4); }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: rgba(255, 255, 255, 0.2); }
-
-input[type=range]::-moz-range-track {
-  width: 330px;
-  height: 2px;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.2); }
+  background: rgba(255, 255, 255, 0.6); }
 
 input[type=range]::-ms-track {
   width: 330px;
@@ -175,6 +158,7 @@ body {
   color: #FFF;
   top: 50px;
   right: 90px;
+
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background-image: url("assets/bgPanel.png");

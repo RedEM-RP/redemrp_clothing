@@ -11,7 +11,6 @@ files {
 	"ui/assets/*.png",
 	"ui/assets/heritage/*.png",
 	"ui/fonts/*.ttf",
-	"ui/front.js",
 	"ui/script.js",
 	"ui/style.css",
 	'ui/debounce.min.js'
@@ -19,14 +18,21 @@ files {
 
 -- Client Scripts
 client_scripts {
-    'client.lua',
+    'client/client.lua',
 	'config.lua',
-   	'mp_female.lua',
-    'mp_male.lua',
+   	'client/cloth_hash_names.lua',
 }
 
 -- Server Scripts
 server_scripts {
     '@mysql-async/lib/MySQL.lua',     -- MySQL init
-    'server.lua',
+    'server/server.lua',
+}
+
+export 'GetComponentId'
+export 'GetClothesComponents'
+
+dependencies {
+	'redemrp_skin',
+	'redemrp_menu_base'
 }
