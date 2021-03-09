@@ -16,10 +16,10 @@ local c_offset = -0.15
 local isCreatorOpened = false
 
 
-function ShowSkinCreator(enable , sex)
+function ShowSkinCreator(enable)
 
     local _elements = list
-    if sex == 2 then
+    if not IsPedMale(PlayerPedId()) then
         _elements = list_f
     end
     SendNUIMessage({
