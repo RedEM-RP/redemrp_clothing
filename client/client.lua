@@ -175,6 +175,7 @@ AddEventHandler('redemrp_clothing:load', function(clothes , target)
     Citizen.CreateThread(function()
         local _target
         local test = false
+        local holstergiy = false
         local _clothes
         local _t = target
         if _t ~= nil then
@@ -192,6 +193,11 @@ AddEventHandler('redemrp_clothing:load', function(clothes , target)
                     local id = tonumber(v)
                     if id ~= nil then
                         if id > 1 then
+                            if k == "holsters_left" and not holstergiy then
+                                holstergiy = true
+                                addWardrobeInventoryItem(tonumber(list[k][id]), 0xF20B6B4A)
+                                addWardrobeInventoryItem("UPGRADE_OFFHAND_HOLSTER", 0x39E57B01)
+                            end
                             if IsPedMale(_target) then
                                 if list[k] ~= nil then
                                     Citizen.InvokeNative(0xD3A7B003ED343FD9 , _target, tonumber(list[k][id]), false, true, true)
@@ -514,4 +520,37 @@ end)
 
 function GetClothesComponents()
 	return {list , list_f}
+end
+
+function getGuidFromItemId(inventoryId, itemData, category, slotId)
+    local outItem = DataView.ArrayBuffer(8*14)
+    local success = Citizen.InvokeNative(0x886DFD3E185C8A89,inventoryId, itemData or 0, category, slotId, outItem:Buffer())
+    if success then
+        return outItem:Buffer()
+    else
+        return null
+    end
+end
+function addWardrobeInventoryItem(itemName,slotHash)
+    local itemHash = itemName
+    if type(itemHash) ~= "number" then
+        itemHash = GetHashKey(itemName)
+    end
+    local addReason = GetHashKey("ADD_REASON_DEFAULT")
+    local inventoryId = 1
+    local isValid = Citizen.InvokeNative(0x6D5D51B188333FD1, itemHash, 0)
+    if not isValid then return false end
+    local characterItem = getGuidFromItemId(inventoryId, null, GetHashKey("CHARACTER"), 0xA1212100)
+    if not characterItem then return false end
+
+    local wardrobeItem = getGuidFromItemId(inventoryId, characterItem, GetHashKey("WARDROBE"), 0x3DABBFA7)
+    if not wardrobeItem then return false end
+
+    local itemData = DataView.ArrayBuffer(8*14)
+    
+    local isAdded = Citizen.InvokeNative(0xCB5D11F9508A928D, inventoryId, itemData:Buffer(), wardrobeItem, itemHash, slotHash, 1, addReason);
+    if not isAdded then return false end
+
+    local equipped = Citizen.InvokeNative(0x734311E2852760D0, inventoryId, itemData:Buffer(), true);
+    return equipped;
 end

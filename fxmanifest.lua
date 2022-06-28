@@ -18,9 +18,10 @@ files {
 
 -- Client Scripts
 client_scripts {
-    'client/client.lua',
+	'client/dataview.lua',
 	'config.lua',
-   	'client/cloth_hash_names.lua',
+	'client/cloth_hash_names.lua',
+    'client/client.lua',
 }
 
 -- Server Scripts
